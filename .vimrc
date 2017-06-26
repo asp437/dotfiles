@@ -1,4 +1,4 @@
-"" Last update 14.06.2017 19:53
+"" Last update 23.06.2017 23:21
 set nocompatible " Use vim, not vi
 
 set hls " Search highlight
@@ -9,11 +9,15 @@ set noswapfile " Disable .swp files
 
 set nowrap " Disable word wraping
 
-" set t_Co=256 " Enable 256 colors
-set termguicolors " Enable True Color
+set t_Co=256 " Enable 256 colors
+" set termguicolors " Enable True Color 
 
 autocmd! bufwritepost $MYVIMRC source $MYVIMRC " Reload config after save
 autocmd! bufwritepre $MYVIMRC call setline (1, '"" Last update '.strftime("%d.%m.%Y %H:%M")) " Add last edit time in the beginging of the file
+
+" Show tab and other hidden symbols
+set list
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
 set cursorline  " Highlight cursor line
 set scrolloff=5 " Scroll offset around cursor
@@ -27,7 +31,11 @@ set encoding=utf-8 " Set default encoding to UTF-8
 " Configure tabs size
 set tabstop=4
 set shiftwidth=4
+set softtabstop=4
 set expandtab
+
+" Hilight right-most column for most code-styles
+set colorcolumn=80
 
 set mouse=a " Enable mouse in console vim
 map <S-Insert> <MiddleMouse>
@@ -36,7 +44,7 @@ map! <S-Insert> <MiddleMouse>
 " Buffer switching hotkeys
 map <F5> :buffers<CR>
 map! <F5> :buffers<CR>
-map <F7> :bnext<CR>
+map <F8> :bnext<CR>
 map! <F7> :bnext<CR>
 map <F6> :bprevious<CR>
 map! <F6> :bprevious<CR>
@@ -67,13 +75,24 @@ nnoremap <C-Right> :vertical res +5<CR>
 nnoremap <C-W><C-[> :split<CR>
 nnoremap <C-W><C-]> :vsplit<CR>
 
-syntax on " Enable syntax highlight
-set nu    " Enable line numbers
+" FZF Extension key bindings
+nnoremap <leader>p :Files<cr>
+nnoremap <leader>. :Tags<cr>
 
-" Hightlight extra whitespaces
-" highlight ExtraWhitespace ctermbg=red guibg=red
-" autocm colorScheme * hightlight ExtraWhitespace ctermbg=reg guibg=red
-" match ExtraWhitespace /\s\+$/
+" CScope key bindings
+" Based on http://github.com/chazy/cscope_maps
+nmap <leader>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>f :cs find f <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>i :cs find i <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+
+syntax on " Enable syntax highlight
+set relativenumber
+set nu    " Enable line numbers
 
 " Vundle configuration
 filetype off " Required by Vundle
@@ -101,12 +120,13 @@ Plugin 'lifepillar/vim-solarized8'
 Plugin 'dikiaap/minimalist'
 Plugin 'zcodes/vim-colors-basic'
 Plugin 'nightsense/seabird'
+Plugin 'morhetz/gruvbox'
 
 " Sidebar with tree
 Plugin 'scrooloose/nerdtree'
 
 " Highlight unwanted spaces
-Plugin 'aserebryakov/filestyle'
+" Plugin 'aserebryakov/filestyle'
 
 " Git integration
 Plugin 'tpope/vim-fugitive'
@@ -117,21 +137,25 @@ Plugin 'majutsushi/tagbar'
 " GLSL syntax highlighting
 Plugin 'tikhomirov/vim-glsl'
 
-" CTags generator
-Plugin 'szw/vim-tags'
-
 " Vim Hooks for automatization
 Plugin 'ahw/vim-hooks'
 
 " Highlight tab indent
 Plugin 'nathanaelkane/vim-indent-guides'
 
+" Fuzzy finder
+" Plugin 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'junegunn/fzf.vim'
+
+" Local vimrc for each project
+Plugin 'embear/vim-localvimrc'
+
 " Turn off temporirial Vundle environment
 call vundle#end()
 filetype plugin indent on
 
-colorscheme basic-dark
 set background=dark
+colorscheme gruvbox
 
 " Syntastic configuration
 set statusline+=%#warningmsg#
@@ -145,4 +169,26 @@ let g:syntastic_check_on_wq = 0
 
 " YouCompleteMe configuration
 let g:ycm_confirm_extra_conf = 1
+
+" fzf (Fuzzy Finder)
+set rtp+=/usr/bin/fzf
+
+" Respeciting .gitignore, .hgignore and svn:ignore
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+
+" Configure clang completer
+" let g:clang_library_path='/usr/lib/clang/4.0.0/lib/linux'
+
+set tags=./tags;,tags;
+let g:easytags_dynamic_files = 1
+
+" Enable transparent background
+hi Normal guibg=NONE ctermbg=NONE
+
+" Auto SCope DB load
+if filereadable("cscope.out")
+    cs add cscope.out
+elseif $CSCOPE_DB != ""
+    cs add $CSCOPE_DB
+endif
 
