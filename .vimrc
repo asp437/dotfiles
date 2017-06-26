@@ -1,4 +1,4 @@
-"" Last update 23.06.2017 23:21
+"" Last update 26.06.2017 12:00
 set nocompatible " Use vim, not vi
 
 set hls " Search highlight
@@ -44,7 +44,7 @@ map! <S-Insert> <MiddleMouse>
 " Buffer switching hotkeys
 map <F5> :buffers<CR>
 map! <F5> :buffers<CR>
-map <F8> :bnext<CR>
+map <F7> :bnext<CR>
 map! <F7> :bnext<CR>
 map <F6> :bprevious<CR>
 map! <F6> :bprevious<CR>
@@ -94,6 +94,9 @@ syntax on " Enable syntax highlight
 set relativenumber
 set nu    " Enable line numbers
 
+" Configure FZF installation
+set rtp+=~/.fzf
+
 " Vundle configuration
 filetype off " Required by Vundle
 set rtp+=~/.vim/bundle/Vundle.vim " Vundle runtime path
@@ -121,6 +124,7 @@ Plugin 'dikiaap/minimalist'
 Plugin 'zcodes/vim-colors-basic'
 Plugin 'nightsense/seabird'
 Plugin 'morhetz/gruvbox'
+Plugin 'tomasr/molokai'
 
 " Sidebar with tree
 Plugin 'scrooloose/nerdtree'
