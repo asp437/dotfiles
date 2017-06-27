@@ -110,3 +110,5 @@ alias tmux="env TERM=xterm-256color tmux"
 # export LESS_TERMCAP_so=$(printf '\e[01;33m') # enter standout mode
 # export LESS_TERMCAP_ue=$(printf '\e[0m') # leave underline mode
 # export LESS_TERMCAP_us=$(printf '\e[04;38;5;200m') # enter underline mode
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
