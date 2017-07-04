@@ -1,4 +1,4 @@
-"" Last update 26.06.2017 12:00
+"" Last update 30.06.2017 22:32
 set nocompatible " Use vim, not vi
 
 set hls " Search highlight
@@ -10,7 +10,7 @@ set noswapfile " Disable .swp files
 set nowrap " Disable word wraping
 
 set t_Co=256 " Enable 256 colors
-" set termguicolors " Enable True Color 
+" set termguicolors " Enable True Color
 
 autocmd! bufwritepost $MYVIMRC source $MYVIMRC " Reload config after save
 autocmd! bufwritepre $MYVIMRC call setline (1, '"" Last update '.strftime("%d.%m.%Y %H:%M")) " Add last edit time in the beginging of the file
@@ -36,6 +36,18 @@ set expandtab
 
 " Hilight right-most column for most code-styles
 set colorcolumn=80
+
+" Use system clipboard by default
+set clipboard=unnamedplus
+
+" Folding based on the syntax rules but don't fold on open
+" set foldmethod=syntax
+autocmd! Syntax c,cpp,vim,xml,html,xhtml setlocal foldmethod=syntax
+autocmd! Syntax c,cpp,vim,xml,html,xhtml,perl normal zR
+
+syntax on " Enable syntax highlight
+set relativenumber
+set nu    " Enable line numbers
 
 set mouse=a " Enable mouse in console vim
 map <S-Insert> <MiddleMouse>
@@ -90,10 +102,6 @@ nmap <leader>f :cs find f <C-R>=expand("<cword>")<CR><CR>
 nmap <leader>i :cs find i <C-R>=expand("<cword>")<CR><CR>
 nmap <leader>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
-syntax on " Enable syntax highlight
-set relativenumber
-set nu    " Enable line numbers
-
 " Configure FZF installation
 set rtp+=~/.fzf
 
@@ -102,7 +110,8 @@ filetype off " Required by Vundle
 set rtp+=~/.vim/bundle/Vundle.vim " Vundle runtime path
 call vundle#begin()
 
-Plugin 'VundleVim/Vundle.vim' " Let's Vundle manages itself
+" Let's Vundle manages itself
+Plugin 'VundleVim/Vundle.vim'
 
 " Powerline binding, requires powerline installed into the system (pip install
 " powerline status)
@@ -129,9 +138,6 @@ Plugin 'tomasr/molokai'
 " Sidebar with tree
 Plugin 'scrooloose/nerdtree'
 
-" Highlight unwanted spaces
-" Plugin 'aserebryakov/filestyle'
-
 " Git integration
 Plugin 'tpope/vim-fugitive'
 
@@ -148,16 +154,20 @@ Plugin 'ahw/vim-hooks'
 Plugin 'nathanaelkane/vim-indent-guides'
 
 " Fuzzy finder
-" Plugin 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 
 " Local vimrc for each project
 Plugin 'embear/vim-localvimrc'
 
+" Powerful tabline
+Plugin 'ap/vim-buftabline'
+
 " Turn off temporirial Vundle environment
 call vundle#end()
 filetype plugin indent on
 
+let g:gruvbox_italic=1
+let g:gruvbox_bold=1
 set background=dark
 colorscheme gruvbox
 
@@ -174,25 +184,24 @@ let g:syntastic_check_on_wq = 0
 " YouCompleteMe configuration
 let g:ycm_confirm_extra_conf = 1
 
-" fzf (Fuzzy Finder)
-set rtp+=/usr/bin/fzf
-
 " Respeciting .gitignore, .hgignore and svn:ignore
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
-" Configure clang completer
-" let g:clang_library_path='/usr/lib/clang/4.0.0/lib/linux'
-
+" Autoload tags files
 set tags=./tags;,tags;
-let g:easytags_dynamic_files = 1
 
 " Enable transparent background
 hi Normal guibg=NONE ctermbg=NONE
 
-" Auto SCope DB load
+" Auto CScope DB load
 if filereadable("cscope.out")
     cs add cscope.out
 elseif $CSCOPE_DB != ""
     cs add $CSCOPE_DB
 endif
+
+" Buftabline configuration
+let g:buftabline_numbers = 2 " Show numbers of the buffers
+let g:buftabline_indicators = 1 " Indicate status of the buffer
+let g:buftabline_separators = 1 " Separators between buffer tabs
 
