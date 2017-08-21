@@ -1,4 +1,4 @@
-"" Last update 30.06.2017 22:32
+"" Last update 08.08.2017 09:53
 set nocompatible " Use vim, not vi
 
 set hls " Search highlight
@@ -64,8 +64,8 @@ map <F8> :bdelete<CR>
 map! <F8> :bdelete<CR>
 
 " Open NERDTree hotkey
-map <F4> :NERDTreeFocus<CR>
-map! <F4> :NERDTreeFocus<CR>
+map <F4> :NERDTreeToggle<CR>
+map! <F4> :NERDTreeToggle<CR>
 
 " Open TagBar hotkey
 map <F3> :TagbarToggle<CR>
@@ -204,4 +204,8 @@ endif
 let g:buftabline_numbers = 2 " Show numbers of the buffers
 let g:buftabline_indicators = 1 " Indicate status of the buffer
 let g:buftabline_separators = 1 " Separators between buffer tabs
+
+" Hotkey for cscope update
+nmap <F9> :!cscope -b **/*.[ch] <CR>
+  \:cscope reset<CR>
 
