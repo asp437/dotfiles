@@ -1,0 +1,6 @@
+*.tmp*
+tags
+cscope.out
+compile_commands.json
+.lvimrc
+

@@ -1,3 +1,6 @@
 [user]
-	email = asp437@gmail.com
+	email = a.parfenov@postgrespro.ru
 	name = Aleksandr Parfenov
+[core]
+	excludesfile = /home/asp437/.gitignore_global
+	pager = less -x4
