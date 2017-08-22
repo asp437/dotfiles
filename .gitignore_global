@@ -3,4 +3,5 @@ tags
 cscope.out
 compile_commands.json
 .lvimrc
+.ycm_extra_conf.py
 

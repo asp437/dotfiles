@@ -1,4 +1,4 @@
-"" Last update 08.08.2017 09:53
+"" Last update 21.08.2017 21:04
 set nocompatible " Use vim, not vi
 
 set hls " Search highlight
@@ -12,7 +12,7 @@ set nowrap " Disable word wraping
 set t_Co=256 " Enable 256 colors
 " set termguicolors " Enable True Color
 
-autocmd! bufwritepost $MYVIMRC source $MYVIMRC " Reload config after save
+" autocmd! bufwritepost $MYVIMRC source $MYVIMRC " Reload config after save
 autocmd! bufwritepre $MYVIMRC call setline (1, '"" Last update '.strftime("%d.%m.%Y %H:%M")) " Add last edit time in the beginging of the file
 
 " Show tab and other hidden symbols
@@ -60,8 +60,8 @@ map <F7> :bnext<CR>
 map! <F7> :bnext<CR>
 map <F6> :bprevious<CR>
 map! <F6> :bprevious<CR>
-map <F8> :bdelete<CR>
-map! <F8> :bdelete<CR>
+map <F8> :BD<CR>
+map! <F8> :BD<CR>
 
 " Open NERDTree hotkey
 map <F4> :NERDTreeToggle<CR>
@@ -162,6 +162,12 @@ Plugin 'embear/vim-localvimrc'
 " Powerful tabline
 Plugin 'ap/vim-buftabline'
 
+" Buffer close without window close
+Plugin 'qpkorr/vim-bufkill'
+
+" Switching between code and header
+Plugin 'vim-scripts/a.vim'
+
 " Turn off temporirial Vundle environment
 call vundle#end()
 filetype plugin indent on
@@ -208,4 +214,9 @@ let g:buftabline_separators = 1 " Separators between buffer tabs
 " Hotkey for cscope update
 nmap <F9> :!cscope -b **/*.[ch] <CR>
   \:cscope reset<CR>
+
+" Vim-fugitive hotkeys
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gc :Gcommit<CR>
+nnoremap <Leader>gb :Gblame<CR>
 
