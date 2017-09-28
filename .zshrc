@@ -112,3 +112,8 @@ alias tmux="env TERM=xterm-256color tmux"
 # export LESS_TERMCAP_us=$(printf '\e[04;38;5;200m') # enter underline mode
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+[[ -s "/home/asp437/.gvm/scripts/gvm" ]] && source "/home/asp437/.gvm/scripts/gvm"
+
+export GOPATH=$HOME/Projects/_go
+gvm use go1.9

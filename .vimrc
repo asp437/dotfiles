@@ -1,4 +1,4 @@
-"" Last update 21.08.2017 21:04
+"" Last update 19.09.2017 15:16
 set nocompatible " Use vim, not vi
 
 set hls " Search highlight
@@ -220,3 +220,5 @@ nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 nnoremap <Leader>gb :Gblame<CR>
 
+" Autoexecute GoLint for go files
+autocmd BufWritePost,FileWritePost *.go execute 'GoLint' | cwindow
