@@ -115,5 +115,5 @@ alias tmux="env TERM=xterm-256color tmux"
 
 [[ -s "/home/asp437/.gvm/scripts/gvm" ]] && source "/home/asp437/.gvm/scripts/gvm"
 
-export GOPATH=$HOME/Projects/_go
 gvm use go1.9
+export GOPATH=$HOME/Projects/_go
