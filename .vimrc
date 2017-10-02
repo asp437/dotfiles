@@ -1,4 +1,4 @@
-"" Last update 19.09.2017 15:16
+"" Last update 02.10.2017 16:13
 set nocompatible " Use vim, not vi
 
 set hls " Search highlight
@@ -17,7 +17,13 @@ autocmd! bufwritepre $MYVIMRC call setline (1, '"" Last update '.strftime("%d.%m
 
 " Show tab and other hidden symbols
 set list
-set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+if has('multi_byte') && &encoding ==# 'utf-8'
+    let &listchars = 'tab:→ ,eol:↵,trail:~,extends:↷,precedes:↶,nbsp:±'
+else
+    " let &listchars = 'tab:> ,eol:¬,trail:~,extends:>,precedes:<,nbsp:.'
+    set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+endif
+" set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
 set cursorline  " Highlight cursor line
 set scrolloff=5 " Scroll offset around cursor
