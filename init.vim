@@ -22,6 +22,20 @@ if dein#load_state(s:bundle_dir)
 
     call dein#add('morhetz/gruvbox')
 
+    call dein#add('Shougo/deoplete.nvim')
+    call dein#add('tweekmonster/deoplete-clang2')
+    call dein#add('zchee/deoplete-go')
+    call dein#add('zchee/deoplete-jedi')
+    call dein#add('c9s/perlomni.vim')
+
+    call dein#add('embear/vim-localvimrc')
+
+    call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
+    call dein#add('junegunn/fzf.vim', { 'depends': 'fz' })
+
+    call dein#add('vim-airline/vim-airline')
+    call dein#add('vim-airline/vim-airline-themes')
+
     if dein#check_install()
         call dein#install()
         let pluginsExist=1
@@ -38,6 +52,7 @@ let g:mapleader=' '
 
 " Repeat default nvim settings
 syntax on
+set termguicolors
 filetype plugin indent on
 set autoindent
 set autoread
@@ -55,7 +70,12 @@ set langnoremap
 set nolangremap
 set laststatus=2
 set list
-set listchars="eol:$,tab:>-,trail:-,nbsp:+"
+if has('multi_byte') && &encoding ==# 'utf-8'
+    let &listchars = 'tab:→ ,eol:↵,trail:~,extends:↷,precedes:↶,nbsp:±'
+else
+    " let &listchars = 'tab:> ,eol:¬,trail:~,extends:>,precedes:<,nbsp:.'
+    set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+endif
 set nocompatible
 set nrformats=bin,hex
 set ruler
@@ -132,3 +152,55 @@ colorscheme gruvbox
 
 " Enable transparent background
 hi Normal guibg=NONE ctermbg=NONE
+
+" Deoplete autocompletion
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_start_length = 1
+let g:deoplete#file#enable_buffer_path = 1
+let g:deoplete#enable_camel_case = 1
+let g:deoplete#max_menu_width = 50
+let g:deoplete#auto_complete_delay = 100
+let g:deoplete#sources = {}
+let g:deoplete#sources._ = ['around', 'member', 'tag']
+let g:deoplete#sources.vim = ['vim', 'tag']
+let g:deoplete#sources.python = ['jedi', 'tag']
+let g:deoplete#sources.go = ['go', 'tag']
+let g:deoplete#sources.c = ['clang2', 'tag']
+let g:deoplete#sources.cpp = ['clang2', 'tag']
+let g:deoplete#sources.perl = ['PerlOmni', 'tag']
+
+let g:deoplete#sources#jedi#enable_cache = 1
+let g:deoplete#sources#go#pointer = 1
+
+let g:airline_theme = 'gruvbox'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_splits = 1
+let g_alrline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tablie#buffer_nr_show = 1
+let g:airline#extensions#tabline#buffer_nr_format = '%s:'
+let g:airline#extensions#tabline#fnamecollapse = 1
+let g:airline#extensions#tabline#fnametruncate = 0
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#default#layout = [
+    \ [ 'a', 'error', 'warning', 'b', 'c' ],
+    \ [ 'x', 'y', 'z' ]
+    \ ]
+let g:webdevicons_enable_airline_tabline = 1
+let g:webdevicons_enable_airline_statusline = 1
+
+" Buffer switching hotkeys
+map <F5> :buffers<CR>
+map! <F5> :buffers<CR>
+map <F7> :bnext<CR>
+map! <F7> :bnext<CR>
+map <F6> :bprevious<CR>
+map! <F6> :bprevious<CR>
+map <F8> :BD<CR>
+map! <F8> :BD<CR>
+
+" FZF Extension key bindings
+nnoremap <leader>p :Files<cr>
+nnoremap <leader>. :Tags<cr>
+
+
