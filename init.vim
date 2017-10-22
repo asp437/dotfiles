@@ -36,6 +36,10 @@ if dein#load_state(s:bundle_dir)
     call dein#add('vim-airline/vim-airline')
     call dein#add('vim-airline/vim-airline-themes')
 
+    call dein#add('fatih/vim-go')
+
+    call dein#add('qpkorr/vim-bufkill')
+
     if dein#check_install()
         call dein#install()
         let pluginsExist=1
@@ -203,4 +207,21 @@ map! <F8> :BD<CR>
 nnoremap <leader>p :Files<cr>
 nnoremap <leader>. :Tags<cr>
 
+" CScope key bindings
+" Based on http://github.com/chazy/cscope_maps
+nmap <leader>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>f :cs find f <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>i :cs find i <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+
+" Auto CScope DB load
+if filereadable("cscope.out")
+    cs add cscope.out
+elseif $CSCOPE_DB != ""
+    cs add $CSCOPE_DB
+endif
 
