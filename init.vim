@@ -9,35 +9,45 @@ if (!isdirectory(expand("$HOME/.config/nvim/bundle/repos/github.com/Shougo/dein.
     call system(expand("mkdir -p $HOME/.config/nvim/bundle/repos/github.com"))
     call system(expand("git clone https://github.com/Shougo/dein.vim $HOME/.config/nvim/bundle/repos/github.com/Shougo/dein.vim"))
 endif
-
 set runtimepath+=~/.config/nvim/bundle/repos/github.com/Shougo/dein.vim
 
+" Configure dein paths
 let s:bundle_dir = expand('~/.config/nvim/bundle')
 let s:plugin_dir = s:bundle_dir . '/repos/github.com'
 
+" List of plugins/bundles
 if dein#load_state(s:bundle_dir)
     call dein#begin(s:bundle_dir)
 
-    call dein#add(s:plugin_dir . '/Shougo/dein.vim')
+    call dein#add(s:plugin_dir . '/Shougo/dein.vim') " Dein itself
 
+    " Color schemes
     call dein#add('morhetz/gruvbox')
 
-    call dein#add('Shougo/deoplete.nvim')
-    call dein#add('tweekmonster/deoplete-clang2')
-    call dein#add('zchee/deoplete-go')
-    call dein#add('zchee/deoplete-jedi')
-    call dein#add('c9s/perlomni.vim')
+    " Autocompletion plugin deoplete and drivers for it
+    " call dein#add('Shougo/deoplete.nvim')
+    " call dein#add('tweekmonster/deoplete-clang2')
+    " call dein#add('zchee/deoplete-go')
+    " call dein#add('zchee/deoplete-jedi')
+    " call dein#add('c9s/perlomni.vim')
+	call dein#add('roxma/nvim-completion-manager')
+	call dein#add('roxma/ncm-clang')
 
+    " Support of local vim configuration
     call dein#add('embear/vim-localvimrc')
 
+    " Fuzzy search via fzf
     call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
     call dein#add('junegunn/fzf.vim', { 'depends': 'fz' })
 
+    " Replace buffer status line with airline
     call dein#add('vim-airline/vim-airline')
     call dein#add('vim-airline/vim-airline-themes')
 
+    " Plug-in collection for golang
     call dein#add('fatih/vim-go')
 
+    " Support of buffer kill command for hotkey F8
     call dein#add('qpkorr/vim-bufkill')
 
     if dein#check_install()
@@ -130,7 +140,7 @@ set mousehide
 
 " Text settings
 set fileencoding=utf-8              " UTF-8 on write
-set expandtab                       " Use spaces instead of tabs
+" set expandtab                       " Use spaces instead of tabs
 set tabstop=4                       " Show tabs as 4 spaces
 set softtabstop=4                   " Tab key indents by 4 spaces
 set shiftwidth=4                    " >> indents by 4 spaces
@@ -158,23 +168,23 @@ colorscheme gruvbox
 hi Normal guibg=NONE ctermbg=NONE
 
 " Deoplete autocompletion
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_complete_start_length = 1
-let g:deoplete#file#enable_buffer_path = 1
-let g:deoplete#enable_camel_case = 1
-let g:deoplete#max_menu_width = 50
-let g:deoplete#auto_complete_delay = 100
-let g:deoplete#sources = {}
-let g:deoplete#sources._ = ['around', 'member', 'tag']
-let g:deoplete#sources.vim = ['vim', 'tag']
-let g:deoplete#sources.python = ['jedi', 'tag']
-let g:deoplete#sources.go = ['go', 'tag']
-let g:deoplete#sources.c = ['clang2', 'tag']
-let g:deoplete#sources.cpp = ['clang2', 'tag']
-let g:deoplete#sources.perl = ['PerlOmni', 'tag']
-
-let g:deoplete#sources#jedi#enable_cache = 1
-let g:deoplete#sources#go#pointer = 1
+" let g:deoplete#enable_at_startup = 1
+" let g:deoplete#auto_complete_start_length = 1
+" let g:deoplete#file#enable_buffer_path = 1
+" let g:deoplete#enable_camel_case = 1
+" let g:deoplete#max_menu_width = 50
+" let g:deoplete#auto_complete_delay = 100
+" let g:deoplete#sources = {}
+" let g:deoplete#sources._ = ['around', 'member', 'tag']
+" let g:deoplete#sources.vim = ['vim', 'tag']
+" let g:deoplete#sources.python = ['jedi', 'tag']
+" let g:deoplete#sources.go = ['go', 'tag']
+" let g:deoplete#sources.c = ['clang2', 'tag']
+" let g:deoplete#sources.cpp = ['clang2', 'tag']
+" let g:deoplete#sources.perl = ['PerlOmni', 'tag']
+" 
+" let g:deoplete#sources#jedi#enable_cache = 1
+" let g:deoplete#sources#go#pointer = 1
 
 let g:airline_theme = 'gruvbox'
 let g:airline_powerline_fonts = 1

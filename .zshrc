@@ -115,8 +115,7 @@ alias tmux="env TERM=xterm-256color tmux"
 
 [[ -s "/home/asp437/.gvm/scripts/gvm" ]] && source "/home/asp437/.gvm/scripts/gvm"
 
-gvm use go1.9.1
 export GOPATH=$HOME/Projects/_go
 
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-source /home/asp437/.local/bin/virtualenvwrapper.sh
+source /usr/bin/virtualenvwrapper.sh
