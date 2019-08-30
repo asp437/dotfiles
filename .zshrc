@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
   export ZSH=/home/asp437/.oh-my-zsh
@@ -86,6 +87,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias ll='ls -la'
+alias l='ls -l'
 
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
         source /etc/profile.d/vte.sh
@@ -111,11 +114,6 @@ alias tmux="env TERM=xterm-256color tmux"
 # export LESS_TERMCAP_ue=$(printf '\e[0m') # leave underline mode
 # export LESS_TERMCAP_us=$(printf '\e[04;38;5;200m') # enter underline mode
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 [[ -s "/home/asp437/.gvm/scripts/gvm" ]] && source "/home/asp437/.gvm/scripts/gvm"
 
-export GOPATH=$HOME/Projects/_go
-
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-source /usr/bin/virtualenvwrapper.sh
+[[ -s "/usr/share/fzf/key-bindings.zsh" ]] && source "/usr/share/fzf/key-bindings.zsh"
