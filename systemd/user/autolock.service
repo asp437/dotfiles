@@ -1,0 +1,7 @@
+[Unit]
+Description=Lock if user is idle
+
+[Service]
+Environment=XAUTHORITY=/home/asp437/.Xauthority
+Environment=DISPLAY=:0
+ExecStart=/home/asp437/.local/bin/screenlock_decider
