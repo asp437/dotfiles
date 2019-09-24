@@ -1,0 +1,5 @@
+go get -u golang.org/x/tools/cmd/gopls
+rustup component add rls rust-analysis rust-src
+gem install solargraph
+pip install python-language-server
+pacman -S clang-tools-extra
