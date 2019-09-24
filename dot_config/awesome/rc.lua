@@ -58,7 +58,7 @@ end
 beautiful.init("/home/asp437/.config/awesome/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "terminator"
+terminal = "kitty"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -222,11 +222,11 @@ awful.screen.connect_for_each_screen(function(s)
             -- updates
             createUpdatesWidget(),
             createNetMonWidget(),
-            createBatteryWidget(),
+            -- createBatteryWidget(),
             createSysTempWidget(),
             createCPUUsageWidget(),
             createRAMUsageWidget(),
-            createBacklightWidget(),
+            -- createBacklightWidget(),
             createVolumeWidget(),
             mykeyboardlayout,
             mytextclock,
