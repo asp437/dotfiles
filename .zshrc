@@ -3,7 +3,7 @@
 export PATH=$HOME/.local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/asp437/.oh-my-zsh
+export ZSH=/home/asp437/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -114,3 +114,7 @@ alias tmux="env TERM=xterm-256color tmux"
 [[ -s "/usr/share/fzf/key-bindings.zsh" ]] && source "/usr/share/fzf/key-bindings.zsh"
 
 [[ -s "/home/asp437/.zshrc_machine_specific" ]] && source "/home/asp437/.zshrc_machine_specific"
+
+export GOPATH="/home/asp437/development/go"
+export PATH=$HOME/development/go/bin:$PATH
+export PATH=$HOME/.gem/ruby/2.6.0/bin:$PATH
