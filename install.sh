@@ -2,6 +2,19 @@
 
 dir=$(pwd -P)
 
+rm -rf ~/.config/awesome
+rm -rf ~/.config/colours
+rm -rf ~/.config/kitty
+rm -rf ~/.config/mc
+rm -rf ~/.config/nvim
+rm -rf ~/.config/systemd
+rm -rf ~/.gitignore_global
+rm -rf ~/.gitconfig
+rm -rf ~/.vimrc
+rm -rf ~/.zshrc
+rm -rf ~/.tmux.conf
+rm -rf ~/.oh-my-zsh/themes/lambda-mod.zsh-theme
+
 ln -f -s $dir/.gitignore_global ~/.gitignore_global
 ln -f -s $dir/.gitconfig ~/.gitconfig
 ln -f -s $dir/.vimrc ~/.vimrc
