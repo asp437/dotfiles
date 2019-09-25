@@ -90,10 +90,6 @@ source $ZSH/oh-my-zsh.sh
 alias ll='ls -la'
 alias l='ls -l'
 
-if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-        source /etc/profile.d/vte.sh
-fi
-
 # Colored less output (including man pages)
 export LESS_TERMCAP_mb=$(printf '\e[01;31m') # enter blinking mode - red
 export LESS_TERMCAP_md=$(printf '\e[01;35m') # enter double-bright mode - bold, magenta
@@ -115,5 +111,6 @@ alias tmux="env TERM=xterm-256color tmux"
 # export LESS_TERMCAP_us=$(printf '\e[04;38;5;200m') # enter underline mode
 
 [[ -s "/home/asp437/.gvm/scripts/gvm" ]] && source "/home/asp437/.gvm/scripts/gvm"
-
 [[ -s "/usr/share/fzf/key-bindings.zsh" ]] && source "/usr/share/fzf/key-bindings.zsh"
+
+[[ -s "/home/asp437/.zshrc_machine_specific" ]] && source "/home/asp437/.zshrc_machine_specific"
