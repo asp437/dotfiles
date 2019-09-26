@@ -3,6 +3,8 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 
+" TODO: Automatic install of vim-plug
+
 call plug#begin('~/.local/share/nvim/plugins')
 " Write list of plugins with comments
 " ColorSchemes:
@@ -61,9 +63,12 @@ colorscheme gruvbox
 " TODO: nerdtree hotkeys
 " TODO: tagbar(or smt) hotkeys
 " TODO: Buffers and tabs hotkeys
-" TODO: Build hotkeys
+" TODO: Build hotkeys?
 " TODO: Panel/Windows hotkeys
 " TODO: Help for hotkeys
+" TODO: deoplete vs asynComplete
+" TODO: vim-airline vs lightline
+" TODO: vim-lsp vs LanguageClient-neovim
 
 " AutoCompleteServers:
 "GoLang
