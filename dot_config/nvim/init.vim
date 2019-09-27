@@ -60,11 +60,13 @@ let g:spacegray_use_italic=1
 colorscheme gruvbox
 
 " TODO: Statusline
-" TODO: nerdtree hotkeys
-" TODO: tagbar(or smt) hotkeys
+" TODO: Tabline
 " TODO: Buffers and tabs hotkeys
 " TODO: Build hotkeys?
+" TODO: Nerdtree
+" TODO: Nerdtree hotkeys
 " TODO: Panel/Windows hotkeys
+" TODO: Auto update compile_commands for C/C++
 " TODO: Help for hotkeys
 " TODO: deoplete vs asynComplete
 " TODO: vim-airline vs lightline
