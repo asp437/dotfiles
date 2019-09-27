@@ -14,6 +14,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " Plugin for asy
 "   fatih/vim-go
 "
 " Other:
+Plug 'itchyny/lightline.vim'                                    " Lightweight statusline extension
 "   scrooloose/nerdtree
 "   vim-syntastic/syntastic
 "   tpope/vim-fugitive
@@ -35,24 +36,23 @@ set splitright                              " Split right of the current window
 " set spell                                   " Enable spell check TODO: toggle
 " set textwidth=0                             " Hard-wrap long lines as you type them TODO: toggle
 
-" Search Configuration
+" Search Configuration:
 set hls                                     " Search highlight
 set is                                      " Incremental search
 set smartcase                               " Smart case search if there is upper
 
-" IO Files Configuration
+" IO Files Configuration:
 set encoding=utf-8                          " Set default encoding to UTF-8
 set autoread                                " Auto file reload if it was change outside of vim
 
-" System/Config Files Configuration
+" System Files Configuration:
 set backupdir=.,~/.local/share/nvim/backup  " List of dirs for backups
 set directory=~/.local/share/nvim/swap      " Directory for swap files
 set undodir=~/.local/share/nvim/undo        " Directory for undo files
 set sessionoptions-=options                 " Don't same options and mapping in mksession
 set history=1000                            " Size of history for vim commands
 
-" Appearance Configuration
-" set belloff=all                             " Disable bell for all events
+" Appearance Configuration:
 set display=lastline                        " Display lastline as much as possible
 set nu                                      " Show number of line
 set colorcolumn=80                          " Highlight right-most columnt for most code-styles (TODO: toggle)
@@ -74,6 +74,7 @@ set showtabline=2                           " Always show tabline
 set synmaxcol=128                           " Highlight clumns (default 3000, 0 - no limit)
 set title                                   " Set terminal's title
 set termguicolors                           " Enable True Color (TODO: Check this option)
+" set belloff=all                             " Disable bell for all events
 " Show tab and other hidden symbols
 " TODO: toggle for this symbols
 if has('multi_byte') && &encoding ==# 'utf-8'
@@ -82,23 +83,21 @@ else
     set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 endif
 
-" Indent and Wrap Configuration
+" Indent Wrap Configuration:
 set autoindent                              " Keep indent on new line
 set nowrap                                  " Disable word wraping
 set backspace=indent,eol,start              " Allow backspacing over different entities
 set formatoptions=tcqjo                     " Format options: auto-wrap text and comments,
                                             " remove comment market it is not useful,
                                             " continue comment market on new line
-
-" Tabulation configuration
 set expandtab                               " Use spaces for indent
 set tabstop=4                               " Length of tabulation
 set shiftwidth=4                            " Length of tabulation for autoindent
 
-" Mouse configuration
+" Mouse Configuration:
 set mouse=a                                 " Enable mouse in all modes
 
-" Fold configuration
+" Fold Configuration:
 set foldenable                              " Enable folds
 set foldmethod=syntax                       " Fold wrt syntax of files
 set foldlevelstart=99                       " Open all folds by default
@@ -111,6 +110,10 @@ let g:gruvbox_underline=1                   " Enables underlined text
 let g:gruvbox_undercurl=1                   " Enables undercurled text
 let g:gruvbox_improved_warnings=1           " Extra hilight warnings
 let g:spacegray_use_italic=1                " Enables italic text
+" Apperance for statusline
+let g:lightline = {
+    \ 'colorscheme': 'Tomorrow_Night'
+    \ }
 colorscheme spacegray
 
 " TODO: Statusline
@@ -126,8 +129,8 @@ colorscheme spacegray
 " TODO: vim-airline vs lightline
 " TODO: vim-lsp vs LanguageClient-neovim
 
-" AutoCompleteServers:
-" GoLang
+" ----AutoCompleteServers----
+" GoLang:
 if executable('gopls')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'gopls',
@@ -136,7 +139,7 @@ if executable('gopls')
         \ })
     autocmd BufWritePre *.go LspDocumentFormatSync
 endif
-" Rust
+" Rust:
 if executable('rls')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'rls',
@@ -145,7 +148,7 @@ if executable('rls')
         \ 'whitelist': ['rust'],
         \ })
 endif
-" Ruby
+" Ruby:
 if executable('solargraph')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'solargraph',
@@ -154,7 +157,7 @@ if executable('solargraph')
         \ 'whitelist': ['ruby'],
         \ })
 endif
-" Python
+" Python:
 if executable('pyls')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'pyls',
@@ -163,7 +166,7 @@ if executable('pyls')
         \ 'workspace_config': {'pyls': {'plugins': {'pydocstyle': {'enabled': v:true}}}}
         \ })
 endif
-" C/C++
+" Clang:
 if executable('clangd')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'clangd',
