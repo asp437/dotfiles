@@ -1,19 +1,15 @@
-" Temporary configuration of tabbing
-set expandtab
-set tabstop=4
-set shiftwidth=4
-
+" ----Plugins----
 call plug#begin('~/.local/share/nvim/plugins')
 " Write list of plugins with comments
+Plug 'prabirshrestha/async.vim'                                 " Async jobs for vim and neovim
 " ColorSchemes:
 Plug 'morhetz/gruvbox'
 Plug 'tomasr/molokai'
 Plug 'ajh17/Spacegray.vim'
 Plug 'lifepillar/vim-solarized8'
 " AutoComplete:
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'prabirshrestha/vim-lsp'                                   " Language Server Protocol client
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " Plugin for async autocompletion via lsp
 " Langs:
 "   fatih/vim-go
 "
@@ -27,92 +23,95 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 "   qpkorr/vim-bufkill
 call plug#end()
 
-syntax on " Enable syntax highlight
-set hls " Search highlight
-set is  " Incremental search
-set nowrap " Disable word wraping
-set cursorline " Highlight cursor line
-set scrolloff=5 " Scroll offset around cursor
-set encoding=utf-8 " Set default encoding to UTF-8
-set colorcolumn=80 " Highlight right-most columnt for most code-styles (TODO: toggle)
-set relativenumber " Relative number of line
-set nu " Show number of line
-set autoindent      " Keep indent on new line
-" set autoread        " Auto file reload if it was change outside of vim
-set backspace=indent,eol,start " Allow backspacing over different entities
-set backupdir=.,~/.local/share/nvim/backup " List of dirs for backups
-" set belloff=all     " Disable bell for all events
-" set complete-=i
-" set directory=~/.local/share/nvim/swap
-" set display=lastline
-" set formatoptions=tcqj
-" set history=1000
-" set langnoremap
-" set nolangremap
-" set laststatus=2
-" set list
-" set nocompatible
-" set nrformats=bin,hex
-" set ruler
-" set sessionoptions-=options
-" set showcmd
-" set tabpagemax=50
-" set ttyfast
-" set undodir=~/.local/share/nvim/undo
-" set viminfo+=!
-" set wildmenu
+" ----Basic options----
+syntax on                                   " Enable syntax highlight
+set nrformats=bin,hex                       " Enable parsing of hex and bin numbers
+set inccommand=nosplit                      " Show effects of the command incrementally
+set wildmenu                                " Completion for command-line
+set nojoinspaces                            " Prevent inserting 2 spaces on a join (J)
+set report=0                                " Always report changed lines
+set splitbelow                              " Split below current window
+set splitright                              " Split right of the current window
+" set spell                                   " Enable spell check TODO: toggle
+" set textwidth=0                             " Hard-wrap long lines as you type them TODO: toggle
 
-set formatoptions+=o    " Continue comment markers in new line
-set inccommand=nosplit  " Show effects of the commdn incrementally
-set lazyredraw          " Do not redraw on registers and macros
-set linebreak           " Write lines at convenient points
-" set modeline            " Enable modeline
-set nojoinspaces        " Prevent inserting 2 spaces on a join (J)
-set numberwidth=1       " Minimal line number width
-" set report              " Always report changed lines
-set showfulltag         " Show tag and info in insert-mode completion
-set showmatch           " Highlight matched bracket
-set showmode            " Show current mode
-set showtabline=2       " Always show tabline
-set smartcase           " Smart case search if there is upper
-" set spell               " Enable spell check
-set splitbelow          " Split below current window
-set splitright          " Split right of the current window
-set synmaxcol=128       " Highlight clumns (default 3000, 0 - no limit)
-set textwidth=0         " Hard-wrap long lines as you type them
-set title               " Set terminal's title
-" set whichwrap+=<,>,h,l  " Allow backspace and cursor keys to cross line boundaries
+" Search Configuration
+set hls                                     " Search highlight
+set is                                      " Incremental search
+set smartcase                               " Smart case search if there is upper
 
-" Configure mouse
-set mouse=a
-set mousehide
+" IO Files Configuration
+set encoding=utf-8                          " Set default encoding to UTF-8
+set autoread                                " Auto file reload if it was change outside of vim
 
-" Fold configuration
-set foldenable          " Enable folds
-set foldmethod=syntax   " Fold wrt syntax of files
-set foldlevelstart=99   " Open all folds by default
+" System/Config Files Configuration
+set backupdir=.,~/.local/share/nvim/backup  " List of dirs for backups
+set directory=~/.local/share/nvim/swap      " Directory for swap files
+set undodir=~/.local/share/nvim/undo        " Directory for undo files
+set sessionoptions-=options                 " Don't same options and mapping in mksession
+set history=1000                            " Size of history for vim commands
 
+" Appearance Configuration
+" set belloff=all                             " Disable bell for all events
+set display=lastline                        " Display lastline as much as possible
+set nu                                      " Show number of line
+set colorcolumn=80                          " Highlight right-most columnt for most code-styles (TODO: toggle)
+set relativenumber                          " Relative number of line
+set scrolloff=5                             " Scroll offset around cursor
+set cursorline                              " Highlight cursor line
+set laststatus=2                            " Always show statusline on last window
+set list                                    " Show tabs and spaces
+set ruler                                   " Show cursor position in status line
+set showcmd                                 " Show partial command in last line
+set tabpagemax=50                           " Maximum number of tab pages
+set lazyredraw                              " Do not redraw on registers and macros
+set linebreak                               " Wrap lines at convenient points
+set numberwidth=1                           " Minimal line number width
+set showfulltag                             " Show tag and info in insert-mode completion
+set showmatch                               " Highlight matched bracket
+set showmode                                " Show current mode
+set showtabline=2                           " Always show tabline
+set synmaxcol=128                           " Highlight clumns (default 3000, 0 - no limit)
+set title                                   " Set terminal's title
+set termguicolors                           " Enable True Color (TODO: Check this option)
 " Show tab and other hidden symbols
 " TODO: toggle for this symbols
-set list
 if has('multi_byte') && &encoding ==# 'utf-8'
     let &listchars = 'tab:→ ,eol:↵,trail:~,extends:↷,precedes:↶,nbsp:±'
 else
-    " let &listchars = 'tab:> ,eol:¬,trail:~,extends:>,precedes:<,nbsp:.'
     set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 endif
 
-" Appearance
-set termguicolors " Enable True Color (TODO: Check this option)
+" Indent and Wrap Configuration
+set autoindent                              " Keep indent on new line
+set nowrap                                  " Disable word wraping
+set backspace=indent,eol,start              " Allow backspacing over different entities
+set formatoptions=tcqjo                     " Format options: auto-wrap text and comments,
+                                            " remove comment market it is not useful,
+                                            " continue comment market on new line
+
+" Tabulation configuration
+set expandtab                               " Use spaces for indent
+set tabstop=4                               " Length of tabulation
+set shiftwidth=4                            " Length of tabulation for autoindent
+
+" Mouse configuration
+set mouse=a                                 " Enable mouse in all modes
+
+" Fold configuration
+set foldenable                              " Enable folds
+set foldmethod=syntax                       " Fold wrt syntax of files
+set foldlevelstart=99                       " Open all folds by default
+
+" ----Appearance----
 set background=dark " TODO: toggle
-let g:gruvbox_italic=1
-let g:gruvbox_bold=1
-let g:gruvbox_underline=1
-let g:gruvboxx_undercurl=1
-" let g:gruvbox_improved_strings=1
-let g:gruvbox_improved_warnings=1
-let g:spacegray_use_italic=1
-colorscheme gruvbox
+let g:gruvbox_italic=1                      " Enables italic text
+let g:gruvbox_bold=1                        " Enables bold text
+let g:gruvbox_underline=1                   " Enables underlined text
+let g:gruvbox_undercurl=1                   " Enables undercurled text
+let g:gruvbox_improved_warnings=1           " Extra hilight warnings
+let g:spacegray_use_italic=1                " Enables italic text
+colorscheme spacegray
 
 " TODO: Statusline
 " TODO: Tabline
@@ -128,7 +127,7 @@ colorscheme gruvbox
 " TODO: vim-lsp vs LanguageClient-neovim
 
 " AutoCompleteServers:
-"GoLang
+" GoLang
 if executable('gopls')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'gopls',
@@ -137,7 +136,7 @@ if executable('gopls')
         \ })
     autocmd BufWritePre *.go LspDocumentFormatSync
 endif
-"Rust
+" Rust
 if executable('rls')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'rls',
@@ -146,7 +145,7 @@ if executable('rls')
         \ 'whitelist': ['rust'],
         \ })
 endif
-"Ruby
+" Ruby
 if executable('solargraph')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'solargraph',
@@ -155,7 +154,7 @@ if executable('solargraph')
         \ 'whitelist': ['ruby'],
         \ })
 endif
-"Python
+" Python
 if executable('pyls')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'pyls',
@@ -164,7 +163,7 @@ if executable('pyls')
         \ 'workspace_config': {'pyls': {'plugins': {'pydocstyle': {'enabled': v:true}}}}
         \ })
 endif
-"C/C++
+" C/C++
 if executable('clangd')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'clangd',
@@ -172,5 +171,5 @@ if executable('clangd')
         \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
         \ })
 endif
-" Enable deoplete completion
-let g:deoplete#enable_at_startup = 1
+
+let g:deoplete#enable_at_startup = 1                " Enable deoplete completion
