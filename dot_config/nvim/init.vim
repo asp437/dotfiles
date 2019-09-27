@@ -3,8 +3,6 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 
-" TODO: Automatic install of vim-plug
-
 call plug#begin('~/.local/share/nvim/plugins')
 " Write list of plugins with comments
 " ColorSchemes:

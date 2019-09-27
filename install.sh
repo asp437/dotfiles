@@ -28,4 +28,6 @@ ln -f -s $dir/dot_config/kitty ~/.config/kitty
 ln -f -s $dir/dot_config/mc ~/.config/mc
 ln -f -s $dir/dot_config/nvim ~/.config/nvim
 ln -f -s $dir/dot_config/systemd ~/.config/systemd
+mkdir -p ~/.local/share/nvim/site/autoload/
+ln -f -s $dir/reqs/plug.vim ~/.local/share/nvim/site/autoload/plug.vim
 
