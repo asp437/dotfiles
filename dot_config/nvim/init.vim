@@ -15,6 +15,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " Plugin for asy
 "
 " Other:
 Plug 'itchyny/lightline.vim'                                    " Lightweight statusline extension
+Plug 'liuchengxu/vim-clap'                                      " Floating window for commands execution
 "   scrooloose/nerdtree
 "   vim-syntastic/syntastic
 "   tpope/vim-fugitive
