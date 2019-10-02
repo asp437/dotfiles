@@ -112,6 +112,7 @@ alias tmux="env TERM=xterm-256color tmux"
 
 [[ -s "/home/asp437/.gvm/scripts/gvm" ]] && source "/home/asp437/.gvm/scripts/gvm"
 [[ -s "/usr/share/fzf/key-bindings.zsh" ]] && source "/usr/share/fzf/key-bindings.zsh"
+[[ -s "/home/asp437/.fzf.zsh" ]] && source "/home/asp437/.fzf.zsh"
 
 [[ -s "/home/asp437/.zshrc_machine_specific" ]] && source "/home/asp437/.zshrc_machine_specific"
 
