@@ -8,8 +8,9 @@ Plug 'tomasr/molokai'
 Plug 'ajh17/Spacegray.vim'
 Plug 'lifepillar/vim-solarized8'
 " AutoComplete:
-Plug 'prabirshrestha/vim-lsp'                                   " Language Server Protocol client
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' } " Language Server Protocol client
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " Plugin for async autocompletion via lsp
+
 " Langs:
 "   fatih/vim-go
 "
@@ -125,54 +126,22 @@ colorscheme spacegray
 " TODO: Panel/Windows hotkeys
 " TODO: Auto update compile_commands for C/C++
 " TODO: Help for hotkeys
-" TODO: deoplete vs asynComplete
-" TODO: vim-airline vs lightline
-" TODO: vim-lsp vs LanguageClient-neovim
 
 " ----AutoCompleteServers----
-" GoLang:
-if executable('gopls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'gopls',
-        \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
-        \ 'whitelist': ['go'],
-        \ })
-    autocmd BufWritePre *.go LspDocumentFormatSync
-endif
-" Rust:
-if executable('rls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'rls',
-        \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
-        \ 'workspace_config': {'rust': {'clippy_preference': 'on'}},
-        \ 'whitelist': ['rust'],
-        \ })
-endif
-" Ruby:
-if executable('solargraph')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'solargraph',
-        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
-        \ 'initialization_options': {"diagnostics": "true"},
-        \ 'whitelist': ['ruby'],
-        \ })
-endif
-" Python:
-if executable('pyls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': {server_info->['pyls']},
-        \ 'whitelist': ['python'],
-        \ 'workspace_config': {'pyls': {'plugins': {'pydocstyle': {'enabled': v:true}}}}
-        \ })
-endif
-" Clang:
-if executable('clangd')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'clangd',
-        \ 'cmd': {server_info->['clangd', '-background-index']},
-        \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
-        \ })
-endif
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+    \ 'python': ['pyls'],
+    \ 'go': ['gopls'],
+    \ 'ruby': ['solargraph', 'stdio'],
+    \ 'cpp': ['clangd'],
+    \ 'c': ['clangd']
+    \ }
 
 let g:deoplete#enable_at_startup = 1                " Enable deoplete completion
+
+" ----Key bindings----
+" Disable macros recording
+nnoremap q <Nop>
+" Do nohl on escape
+nnoremap <Esc> :nohlsearch<CR>
+
