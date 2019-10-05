@@ -7,6 +7,7 @@ Plug 'morhetz/gruvbox'
 Plug 'tomasr/molokai'
 Plug 'ajh17/Spacegray.vim'
 Plug 'lifepillar/vim-solarized8'
+
 " AutoComplete:
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' } " Language Server Protocol client
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Plugin for async autocompletion via lsp
@@ -34,7 +35,7 @@ set nojoinspaces                                        " Prevent inserting 2 sp
 set report=0                                            " Always report changed lines
 set splitbelow                                          " Split below current window
 set splitright                                          " Split right of the current window
-" set spell                                               " Enable spell check TODO: toggle
+" set spell                                               " Enable spell check
 " set textwidth=0                                         " Hard-wrap long lines as you type them TODO: toggle
 
 " Search Configuration:
@@ -77,7 +78,6 @@ set title                                               " Set terminal's title
 set termguicolors                                       " Enable True Color (TODO: Check this option)
 " set belloff=all                                         " Disable bell for all events
 " Show tab and other hidden symbols
-" TODO: toggle for this symbols
 if has('multi_byte') && &encoding ==# 'utf-8'
     let &listchars = 'tab:→ ,eol:↵,trail:~,extends:↷,precedes:↶,nbsp:±'
 else
