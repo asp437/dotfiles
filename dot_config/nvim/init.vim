@@ -159,7 +159,9 @@ nnoremap <Leader>ts     :set spell!<CR>
 nnoremap <Leader>ev :vsplit $MYVIMRC<cr>
 
 " System:
-nnoremap <Leader>sv :source $MYVIMRC<cr>
+nnoremap <Leader>sr :source $MYVIMRC<cr>
+nnoremap <Leader>st :split term://zsh<cr>
+nnoremap <Leader>sh :vert help 
 
 " Buffers:
 " nnoremap <leader>sv :source $MYVIMRC<cr>
