@@ -222,11 +222,11 @@ awful.screen.connect_for_each_screen(function(s)
             -- updates
             createUpdatesWidget(),
             createNetMonWidget(),
-            -- createBatteryWidget(),
+            createBatteryWidget(),
             createSysTempWidget(),
             createCPUUsageWidget(),
             createRAMUsageWidget(),
-            -- createBacklightWidget(),
+            createBacklightWidget(),
             createVolumeWidget(),
             mykeyboardlayout,
             mytextclock,

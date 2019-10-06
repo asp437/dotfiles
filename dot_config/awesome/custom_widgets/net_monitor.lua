@@ -18,9 +18,8 @@ function createNetMonWidget()
         wifi_state = "on",
         eth_state = "off",
         settings = function()
-            local wlan0 = net_now.devices.wlp2s0
-            if wlan0 then
-                if wlan0.wifi then
+            if net_now then
+                if net_now.state == "up" then
                     widget:set_markup(lain.util.markup(colours.fg_normal, ' 直 ﰵ' .. net_now.sent .. ' ﰬ' .. net_now.received))
                 else
                     widget:set_markup(lain.util.markup(colours.text_red, ' 睊No Connection'))

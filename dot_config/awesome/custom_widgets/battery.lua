@@ -17,27 +17,29 @@ function createBatteryWidget()
     bat = lain.widget.bat({
         timeout = 5,
         settings = function()
-            prefix = '  '
-            if bat_now.perc ~= 'N/A' then
-                local perc = bat_now.perc
-                local fg_color = colours.fg_normal
+            if bat_now.status ~= nil then
+                prefix = '  '
+                if bat_now.perc ~= 'N/A' then
+                    local perc = bat_now.perc
+                    local fg_color = colours.fg_normal
 
-                if perc < 20 then
-                    fg_color = colours.text_red
-                end
-
-                local time = bat_now.time ~= 'N/A' and '(' .. bat_now.time .. ')' or ''
-                if bat_now.ac_status == 1 then
-                    fg_color = colours.text_orange
-                    if bat_now.status == "Full" then
-                        fg_color = colours.text_green
-                        time = ''
+                    if perc < 20 then
+                        fg_color = colours.text_red
                     end
-                end
 
-                widget:set_markup(lain.util.markup(fg_color, prefix .. perc .. '% ' .. time))
-            else
-                widget:set_markup(lain.util.markup(colours.text_red, prefix .. bat_now.perc))
+                    local time = bat_now.time ~= 'N/A' and '(' .. bat_now.time .. ')' or ''
+                    if bat_now.ac_status == 1 then
+                        fg_color = colours.text_orange
+                        if bat_now.status == "Full" then
+                            fg_color = colours.text_green
+                            time = ''
+                        end
+                    end
+
+                    widget:set_markup(lain.util.markup(fg_color, prefix .. perc .. '% ' .. time))
+                else
+                    widget:set_markup(lain.util.markup(colours.text_red, prefix .. bat_now.perc))
+                end
             end
         end
     })
