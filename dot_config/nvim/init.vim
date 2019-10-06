@@ -35,8 +35,8 @@ set nojoinspaces                                        " Prevent inserting 2 sp
 set report=0                                            " Always report changed lines
 set splitbelow                                          " Split below current window
 set splitright                                          " Split right of the current window
-" set spell                                               " Enable spell check
-" set textwidth=0                                         " Hard-wrap long lines as you type them TODO: toggle
+set nospell                                             " Enable spell check
+set textwidth=0                                         " Hard-wrap long lines as you type them
 
 " Search Configuration:
 set hls                                                 " Search highlight
@@ -57,7 +57,7 @@ set history=1000                                        " Size of history for vi
 " Appearance Configuration:
 set display=lastline                                    " Display lastline as much as possible
 set nu                                                  " Show number of line
-set colorcolumn=80                                      " Highlight right-most columnt for most code-styles (TODO: toggle)
+set colorcolumn=80                                      " Highlight right-most columnt for most code-styles
 set relativenumber                                      " Relative number of line
 set scrolloff=5                                         " Scroll offset around cursor
 set cursorline                                          " Highlight cursor line
@@ -75,7 +75,7 @@ set showmode                                            " Show current mode
 set showtabline=2                                       " Always show tabline
 set synmaxcol=128                                       " Highlight clumns (default 3000, 0 - no limit)
 set title                                               " Set terminal's title
-set termguicolors                                       " Enable True Color (TODO: Check this option)
+set termguicolors                                       " Enable True Color
 " set belloff=all                                         " Disable bell for all events
 " Show tab and other hidden symbols
 if has('multi_byte') && &encoding ==# 'utf-8'
@@ -104,15 +104,14 @@ set foldmethod=syntax                                   " Fold wrt syntax of fil
 set foldlevelstart=99                                   " Open all folds by default
 
 " ----Appearance----
-set background=dark " TODO: toggle
+set background=dark                                     " Default dark background
 let g:gruvbox_italic=1                                  " Enables italic text
 let g:gruvbox_bold=1                                    " Enables bold text
 let g:gruvbox_underline=1                               " Enables underlined text
 let g:gruvbox_undercurl=1                               " Enables undercurled text
 let g:gruvbox_improved_warnings=1                       " Extra hilight warnings
 let g:spacegray_use_italic=1                            " Enables italic text
-" Apperance for statusline
-let g:lightline = { 'colorscheme': 'Tomorrow_Night' }
+let g:lightline = { 'colorscheme': 'Tomorrow_Night' }   " Apperance for statusline
 colorscheme spacegray
 
 " TODO: Statusline
@@ -134,6 +133,29 @@ let g:LanguageClient_serverCommands = {
 let g:deoplete#enable_at_startup = 1                    " Enable deoplete completion
 
 " ----Helper functions----
+function! ToggleColorcolumn()
+    if (&colorcolumn)
+        set colorcolumn=0
+    else
+        set colorcolumn=80
+    endif
+endfunction
+
+function! ToggleHardwrap()
+    if (&textwidth)
+        set textwidth=0
+    else
+        set textwidth=120
+    endif
+endfunction
+
+function! ToggleBackground()
+    if (&background ==# 'dark')
+        set background=light
+    else
+        set background=dark
+    endif
+endfunction
 
 " ----Key bindings----
 " Map leader keys
@@ -142,18 +164,16 @@ let mapleader=' '
 let g:mapleader=' '
 
 " Faster <esc> by pressing jk in insert mode
-inoremap jk <esc>
-" Disable macros recording
+inoremap jk             <esc>
 nnoremap q              <Nop>
-" Do nohl on escape
 nnoremap <Esc>          :nohlsearch<CR> 
 
 " Toggles:
 nnoremap <Leader>tw     :set list!<CR>
 nnoremap <Leader>ts     :set spell!<CR>
-" set colorcolumn=80                          " Highlight right-most columnt for most code-styles (TODO: toggle)
-" set textwidth=0                             " Hard-wrap long lines as you type them TODO: toggle
-" set background=dark " TODO: toggle
+nnoremap <Leader>tc     :call ToggleColorcolumn()<CR>
+nnoremap <Leader>tw     :call ToggleHardwrap()<CR>
+nnoremap <Leader>tb     :call ToggleBackground()<CR>
 "
 " Edits:
 nnoremap <Leader>ev :vsplit $MYVIMRC<cr>
