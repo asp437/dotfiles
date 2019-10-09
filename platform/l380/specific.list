@@ -1,4 +1,6 @@
 arandr
 autorandr
+lib32-vulkan-intel
 intel-gpu-tools
 xf86-video-intel
+vulkan-intel

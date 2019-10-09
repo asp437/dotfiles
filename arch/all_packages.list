@@ -88,8 +88,6 @@ e2fsprogs
 ecryptfs-utils
 efibootmgr
 efivar
-egl-wayland
-eglexternalplatform
 emacs
 enchant
 exfat-utils
@@ -577,6 +575,7 @@ libxss
 libxt
 libxtst
 libxv
+libxvmc
 libxxf86dga
 libxxf86vm
 libyaml
@@ -692,6 +691,7 @@ pciutils
 pcmanfm
 pcre
 pcre2
+peg
 perl
 perl-error
 perl-io-tty
@@ -732,6 +732,7 @@ python-appdirs
 python-attrs
 python-beaker
 python-cachecontrol
+python-cairo
 python-chardet
 python-colorama
 python-dbus
@@ -904,11 +905,11 @@ tmux
 tree
 tslib
 ttf-dejavu
-ttf-droid
 ttf-fira-code
 ttf-fira-mono
 ttf-fira-sans
 ttf-inconsolata
+ttf-liberation
 ttf-nerd-fonts-symbols
 ttf-ubuntu-font-family
 tzdata
@@ -1031,4 +1032,8 @@ zita-alsa-pcmi
 zita-resampler
 zlib
 zsh
+zsh-autosuggestions
+zsh-completions
+zsh-history-substring-search
+zsh-syntax-highlighting
 zstd

@@ -54,6 +54,7 @@ gcc
 gcc-libs
 gdb
 gettext
+ghostscript
 glances
 glibc
 go
