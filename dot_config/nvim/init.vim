@@ -199,3 +199,9 @@ nnoremap <Leader>bp :bprev<CR>
 " nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " TODO: Build hotkeys?
+" Quick run
+autocmd FileType      sh nnoremap <localleader> br :!bash %<CR>
+autocmd FileType       c nnoremap <localleader> br :!gcc -std=c11   -w % -o /tmp/test && /tmp/test<CR>
+autocmd FileType     cpp nnoremap <localleader> br :!g++ -std=c++17 -w % -o /tmp/test && /tmp/test<CR>
+autocmd FileType    rust nnoremap <localleader> br :!cargo script %<CR>
+autocmd FileType  python nnoremap <localleader> br :!python %<CR>
