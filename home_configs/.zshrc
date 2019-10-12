@@ -53,7 +53,8 @@ ENABLE_CORRECTION="false"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git sublime sudo tmux zsh-autosuggestions warhol)
+DISABLE_MAGIC_FUNCTIONS="true"
+plugins=(git sublime sudo tmux) # zsh-autosuggestions warhol)
 
 ZSH_TMUX_AUTOSTART="false"
 

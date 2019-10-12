@@ -5,3 +5,5 @@
 [V] Add system wide config for HiDPI from l380
 [V] Scripts to automatic sync pacman packages
 [ ] Scripts to automatic sync AUR packages
+[ ] Check if links are already setup
+[ ] Install oh-my-zsh in install.sh
