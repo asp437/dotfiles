@@ -169,23 +169,26 @@ nnoremap q              <Nop>
 nnoremap <Esc>          :nohlsearch<CR> 
 
 " Toggles:
-nnoremap <Leader>tw     :set list!<CR>
+nnoremap <Leader>tl     :set list!<CR>
 nnoremap <Leader>ts     :set spell!<CR>
 nnoremap <Leader>tc     :call ToggleColorcolumn()<CR>
 nnoremap <Leader>tw     :call ToggleHardwrap()<CR>
 nnoremap <Leader>tb     :call ToggleBackground()<CR>
 "
 " Edits:
-nnoremap <Leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
 
 " System:
-nnoremap <Leader>sr :source $MYVIMRC<cr>
-nnoremap <Leader>st :split term://zsh<cr>
+nnoremap <Leader>sr :source $MYVIMRC<CR>
+nnoremap <Leader>st :split term://zsh<CR>
 nnoremap <Leader>sh :vert help 
+nnoremap <Leader>ss :checkhealth<CR>
 
 " Buffers:
 " nnoremap <leader>sv :source $MYVIMRC<cr>
 " TODO: Buffers and tabs hotkeys
+nnoremap <Leader>bn :bnext<CR>
+nnoremap <Leader>bp :bprev<CR>
 
 " Windows:
 " nnoremap <leader>sv :source $MYVIMRC<cr>
@@ -196,3 +199,9 @@ nnoremap <Leader>sh :vert help
 " nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " TODO: Build hotkeys?
+" Quick run
+autocmd FileType      sh nnoremap <localleader> br :!bash %<CR>
+autocmd FileType       c nnoremap <localleader> br :!gcc -std=c11   -w % -o /tmp/test && /tmp/test<CR>
+autocmd FileType     cpp nnoremap <localleader> br :!g++ -std=c++17 -w % -o /tmp/test && /tmp/test<CR>
+autocmd FileType    rust nnoremap <localleader> br :!cargo script %<CR>
+autocmd FileType  python nnoremap <localleader> br :!python %<CR>

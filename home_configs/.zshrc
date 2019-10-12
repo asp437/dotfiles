@@ -119,3 +119,5 @@ export EDITOR="nvim"
 export GOPATH="/home/asp437/development/go"
 export PATH=$HOME/development/go/bin:$PATH
 export PATH=$HOME/.gem/ruby/2.6.0/bin:$PATH
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
