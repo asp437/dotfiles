@@ -5,3 +5,8 @@
 [V] Add system wide config for HiDPI from l380
 [V] Scripts to automatic sync pacman packages
 [ ] Scripts to automatic sync AUR packages
+[ ] .xinitrc doesn't installed by install.sh
+[ ] Check for link existing
+[ ] Install oh-my-zsh if it not installed
+[ ] Automatic install of nvim plugin during installation process
+[ ] Configure ssh agent
