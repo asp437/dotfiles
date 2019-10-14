@@ -172,7 +172,8 @@ nnoremap <Esc>          :nohlsearch<CR>
 nnoremap <Leader>tl     :set list!<CR>
 nnoremap <Leader>ts     :set spell!<CR>
 nnoremap <Leader>tc     :call ToggleColorcolumn()<CR>
-nnoremap <Leader>tw     :call ToggleHardwrap()<CR>
+nnoremap <Leader>th     :call ToggleHardwrap()<CR>
+nnoremap <Leader>tw     :set wrap!<CR>
 nnoremap <Leader>tb     :call ToggleBackground()<CR>
 "
 " Edits:

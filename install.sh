@@ -2,6 +2,7 @@
 
 dir=$(pwd -P)
 
+rm -rf ~/.config/albert
 rm -rf ~/.config/awesome
 rm -rf ~/.config/colours
 rm -rf ~/.config/kitty
