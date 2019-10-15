@@ -12,3 +12,4 @@
 [ ] Check if links are already setup
 [ ] Update volume widget on status change, not by timer
 [ ] Open NetworkManager by clicking on wifi status
+[ ] Remove some of the informers fromt TMUX, since they are duplicated in awesome panel
