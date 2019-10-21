@@ -5,6 +5,7 @@ alsa-firmware
 alsa-plugins
 alsa-tools
 alsa-utils
+archey3
 autoconf
 automake
 awesome
@@ -21,6 +22,7 @@ calibre
 chromium
 clang
 clojure
+cmake
 coreutils
 cpupower
 crda
@@ -149,10 +151,12 @@ pulseaudio-bluetooth
 pulseaudio-bluetooth-a2dp-gdm-fix
 pulseaudio-ctl
 pulsemixer
-python-neovim
 python-pip
+python-pynvim
 python2-pip
 qbittorrent
+qemu
+qemu-arch-extra
 qpdfview
 reiserfsprogs
 rsync
