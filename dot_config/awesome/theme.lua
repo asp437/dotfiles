@@ -12,8 +12,8 @@ local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
--- theme.font          = "Source Code Pro 9"
-theme.font          = "MesloLGM Nerd Font RegularForPowerline 11"
+theme.font          = "Source Code Pro 11"
+-- theme.font          = "MesloLGM Nerd Font RegularForPowerline 11"
 
 theme.bg_normal     = colours.bg_normal
 theme.bg_focus      = colours.bg_focus
