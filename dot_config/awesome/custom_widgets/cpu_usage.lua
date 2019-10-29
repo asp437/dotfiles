@@ -13,18 +13,14 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 local colours = require("colours")
 
 function createCPUUsageWidget()
-    return awful.widget.watch(
-        "mpstat 1 1",
-        3,
-        function(widget, stdout)
-            out = gears.string.split(stdout, ' ')
-            usage = gears.math.round(100 - out[#out])
+    return lain.widget.cpu {
+        settings = function()
             fg_color = colours.fg_normal
-            if usage > 75 then
+            if cpu_now.usage > 75 then
                 fg_color = colours.text_red
             end
             prefix = '  '
-            widget:set_markup(lain.util.markup(fg_color, prefix .. usage .. '%'))
+            widget:set_markup(lain.util.markup(fg_color, prefix .. cpu_now.usage .. '%'))
         end
-    )
+    }
 end
