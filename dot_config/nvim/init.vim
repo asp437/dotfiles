@@ -20,6 +20,8 @@ Plug 'itchyny/lightline.vim'                            " Lightweight statusline
 Plug 'mengelbrecht/lightline-bufferline'                " Lightweight bufferline extension
 Plug 'ryanoasis/vim-devicons'                           " Dev-icons in buffer line and other places
 Plug 'scrooloose/nerdtree'                              " File navigator for vim
+Plug '/usr/bin/fzf'                                     " Fuzzy search binary for following plugin
+Plug 'junegunn/fzf.vim'                                 " Fuzzy search via fzf
 "   vim-syntastic/syntastic
 "   tpope/vim-fugitive
 "   majutsushi/tagbar
@@ -128,6 +130,21 @@ colorscheme spacegray
 " TODO: Auto update compile_commands for C/C++
 " TODO: Help for hotkeys
 
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
 " ----AutoCompleteServers----
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'stable', 'rls'],
@@ -183,8 +200,10 @@ nnoremap <Leader>tc     :call ToggleColorcolumn()<CR>
 nnoremap <Leader>th     :call ToggleHardwrap()<CR>
 nnoremap <Leader>tw     :set wrap!<CR>
 nnoremap <Leader>tb     :call ToggleBackground()<CR>
-nnoremap <Leader>tt     :NERDTreeToggle<CR>
-"
+nnoremap <Leader>te     :NERDTreeToggle<CR>
+" TODO: tagbar
+" nnoremap <Leader>tt     :NERDTreeToggle<CR>
+
 " Edits:
 nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
 
@@ -211,18 +230,23 @@ nnoremap <Leader>8 :b8<CR>
 nnoremap <Leader>9 :b9<CR>
 nnoremap <Leader>0 :b10<CR>
 
+" Searching
+nnoremap <Leader>sf :Files<CR>
+nnoremap <Leader>sb :Buffers<CR>
+nnoremap <Leader>ss :Rg<CR>
+nnoremap <Leader>sc :Commands<CR>
+
 " Windows:
 " nnoremap <leader>sv :source $MYVIMRC<cr>
 " TODO: Panel/Windows hotkeys
-" TODO: Nerdtree hotkeys
 
 " Git:
 " nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " TODO: Build hotkeys?
 " Quick run
-autocmd FileType      sh nnoremap <localleader> br :!bash %<CR>
-autocmd FileType       c nnoremap <localleader> br :!gcc -std=c11   -w % -o /tmp/test && /tmp/test<CR>
-autocmd FileType     cpp nnoremap <localleader> br :!g++ -std=c++17 -w % -o /tmp/test && /tmp/test<CR>
-autocmd FileType    rust nnoremap <localleader> br :!cargo script %<CR>
-autocmd FileType  python nnoremap <localleader> br :!python %<CR>
+autocmd FileType      sh nnoremap <localleader>br :!bash %<CR>
+autocmd FileType       c nnoremap <localleader>br :!gcc -std=c11   -w % -o /tmp/test && /tmp/test<CR>
+autocmd FileType     cpp nnoremap <localleader>br :!g++ -std=c++17 -w % -o /tmp/test && /tmp/test<CR>
+autocmd FileType    rust nnoremap <localleader>br :!cargo script %<CR>
+autocmd FileType  python nnoremap <localleader>br :!python %<CR>
