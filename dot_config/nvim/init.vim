@@ -17,6 +17,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Plugin for async
 "
 " Other:
 Plug 'itchyny/lightline.vim'                            " Lightweight statusline extension
+Plug 'mengelbrecht/lightline-bufferline'                " Lightweight bufferline extension
 "   scrooloose/nerdtree
 "   vim-syntastic/syntastic
 "   tpope/vim-fugitive
@@ -112,6 +113,12 @@ let g:gruvbox_undercurl=1                               " Enables undercurled te
 let g:gruvbox_improved_warnings=1                       " Extra hilight warnings
 let g:spacegray_use_italic=1                            " Enables italic text
 let g:lightline = { 'colorscheme': 'Tomorrow_Night' }   " Apperance for statusline
+let g:lightline.tabline = {'left': [['buffers']], 'right': [[]]} " Configure upper statusline content
+let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
+let g:lightline.component_type   = {'buffers': 'tabsel'}
+let g:lightline#bufferline#show_number = 1              " Show buffer numbers
+let g:lightline#bufferline#enable_devicons = 1          " Enable special dev-icons
+let g:lightline#bufferline#unicode_symbols = 1          " Enable unicode special symbols
 colorscheme spacegray
 
 " TODO: Statusline
@@ -190,6 +197,17 @@ nnoremap <Leader>ss :checkhealth<CR>
 " TODO: Buffers and tabs hotkeys
 nnoremap <Leader>bn :bnext<CR>
 nnoremap <Leader>bp :bprev<CR>
+" TODO: Create following mappings via loop
+nnoremap <Leader>1 :b1<CR>
+nnoremap <Leader>2 :b2<CR>
+nnoremap <Leader>3 :b3<CR>
+nnoremap <Leader>4 :b4<CR>
+nnoremap <Leader>5 :b5<CR>
+nnoremap <Leader>6 :b6<CR>
+nnoremap <Leader>7 :b7<CR>
+nnoremap <Leader>8 :b8<CR>
+nnoremap <Leader>9 :b9<CR>
+nnoremap <Leader>0 :b10<CR>
 
 " Windows:
 " nnoremap <leader>sv :source $MYVIMRC<cr>
