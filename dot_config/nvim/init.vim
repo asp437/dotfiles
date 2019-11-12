@@ -18,7 +18,8 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Plugin for async
 " Other:
 Plug 'itchyny/lightline.vim'                            " Lightweight statusline extension
 Plug 'mengelbrecht/lightline-bufferline'                " Lightweight bufferline extension
-"   scrooloose/nerdtree
+Plug 'ryanoasis/vim-devicons'                           " Dev-icons in buffer line and other places
+Plug 'scrooloose/nerdtree'                              " File navigator for vim
 "   vim-syntastic/syntastic
 "   tpope/vim-fugitive
 "   majutsushi/tagbar
@@ -182,6 +183,7 @@ nnoremap <Leader>tc     :call ToggleColorcolumn()<CR>
 nnoremap <Leader>th     :call ToggleHardwrap()<CR>
 nnoremap <Leader>tw     :set wrap!<CR>
 nnoremap <Leader>tb     :call ToggleBackground()<CR>
+nnoremap <Leader>tt     :NERDTreeToggle<CR>
 "
 " Edits:
 nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
