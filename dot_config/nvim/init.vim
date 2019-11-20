@@ -236,6 +236,9 @@ nnoremap <Leader>sb :Buffers<CR>
 nnoremap <Leader>ss :Rg<CR>
 nnoremap <Leader>sc :Commands<CR>
 
+" Goto
+nnoremap <Leader>gd :call LanguageClient#textDocument_definition()<CR>
+
 " Windows:
 " nnoremap <leader>sv :source $MYVIMRC<cr>
 " TODO: Panel/Windows hotkeys
