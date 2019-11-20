@@ -216,6 +216,8 @@ nnoremap <Leader>ss :checkhealth<CR>
 " Buffers:
 " nnoremap <leader>sv :source $MYVIMRC<cr>
 " TODO: Buffers and tabs hotkeys
+nnoremap <Leader>n :bnext<CR>
+nnoremap <Leader>p :bprev<CR>
 nnoremap <Leader>bn :bnext<CR>
 nnoremap <Leader>bp :bprev<CR>
 " TODO: Create following mappings via loop
