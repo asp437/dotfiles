@@ -21,8 +21,10 @@ bzip2
 calibre
 chromium
 clang
+cloc
 clojure
 cmake
+cmatrix
 coreutils
 cpupower
 crda
@@ -87,8 +89,6 @@ jfsutils
 keepass
 kitty
 less
-lib32-libva-vdpau-driver
-lib32-mesa-vdpau
 libtool
 libva-mesa-driver
 libva-vdpau-driver
@@ -131,14 +131,17 @@ nfs-utils
 nilfs-utils
 ninja
 ntfs-3g
+ntp
 openssh
 openvpn
 os-prober
+otf-ipafont
 pacman
 patch
 pavucontrol
 pciutils
 pcmanfm
+perf
 perl
 pkgconf
 ponymix
@@ -158,7 +161,9 @@ qbittorrent
 qemu
 qemu-arch-extra
 qpdfview
+ranger
 reiserfsprogs
+ripgrep
 rsync
 rubygems
 rust-docs
@@ -169,7 +174,6 @@ scrot
 sed
 shadow
 spectre-meltdown-checker
-steam-native
 sudo
 sysbench
 sysfsutils
