@@ -13,17 +13,14 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 local colours = require("colours")
 
 function createSysTempWidget()
-    return awful.widget.watch(
-        "/home/asp437/.config/awesome/custom_widgets/temperature",
-        5,
-        function(widget, stdout)
-            local text_color = colours.fg_normal
-            local temp = gears.math.round(stdout)
-            if temp > 55 then
-                text_color = colours.text_red
+    return lain.widget.temp {
+        settings = function()
+            fg_color = colours.fg_normal
+            if coretemp_now > 55 then
+                fg_color = colours.text_red
             end
             prefix = '  '
-            widget:set_markup(lain.util.markup(text_color, prefix .. temp .. '°C'))
+            widget:set_markup(lain.util.markup(fg_color, prefix .. coretemp_now))
         end
-    )
+    }
 end
