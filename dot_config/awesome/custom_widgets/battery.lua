@@ -32,7 +32,8 @@ function createBatteryWidget()
                         fg_color = colours.text_orange
                         if bat_now.status == "Full" then
                             fg_color = colours.text_green
-                            time = ''
+                            widget:set_markup(lain.util.markup(fg_color, prefix))
+                            return
                         end
                     end
 
