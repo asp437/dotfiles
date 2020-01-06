@@ -12,6 +12,32 @@ local lain = require("lain")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local colours = require("colours")
 
+function createNetMonWidgetShort()
+    return lain.widget.net{
+        notify = "on",
+        wifi_state = "on",
+        eth_state = "off",
+        settings = function()
+            if net_now then
+                if net_now.state == "up" then
+                    threshold = 100
+                    up_color = colours.fg_normal
+                    down_color = colours.fg_normal
+                    if gears.math.round(net_now.sent) > threshold then
+                        up_color = colours.text_green
+                    end
+                    if gears.math.round(net_now.received) > threshold then
+                        down_color = colours.text_green
+                    end
+                    widget:set_markup(lain.util.markup(colours.fg_normal, ' 直 ') .. lain.util.markup(up_color, 'ﰵ') .. lain.util.markup(down_color, ' ﰬ'))
+                else
+                    widget:set_markup(lain.util.markup(colours.text_red, ' 睊No Connection'))
+                end
+            end
+        end
+    }
+end
+
 function createNetMonWidget()
     return lain.widget.net{
         notify = "on",

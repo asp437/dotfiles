@@ -232,7 +232,7 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             -- updates
             createUpdatesWidget(),
-            createNetMonWidget(),
+            createNetMonWidgetShort(),
             createBatteryWidget(),
             createSysTempWidget(),
             createCPUUsageWidget(),
