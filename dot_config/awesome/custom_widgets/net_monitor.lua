@@ -29,7 +29,7 @@ function createNetMonWidgetShort()
                     if gears.math.round(net_now.received) > threshold then
                         down_color = colours.text_green
                     end
-                    widget:set_markup(lain.util.markup(colours.fg_normal, ' 直 ') .. lain.util.markup(up_color, 'ﰵ') .. lain.util.markup(down_color, ' ﰬ'))
+                    widget:set_markup(' ' .. lain.util.markup(up_color, 'ﰵ') .. lain.util.markup(down_color, ' ﰬ'))
                 else
                     widget:set_markup(lain.util.markup(colours.text_red, ' 睊No Connection'))
                 end
