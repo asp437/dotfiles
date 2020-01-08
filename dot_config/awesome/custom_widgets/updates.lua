@@ -17,7 +17,7 @@ function createUpdatesWidget()
         "/home/asp437/.config/awesome/custom_widgets/arch-update",
         300,
         function(widget, stdout)
-            widget:set_markup(stdout)
+            widget:set_markup(' ' ..  stdout .. ' ')
         end
     )
 end

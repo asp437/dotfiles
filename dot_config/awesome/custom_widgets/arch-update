@@ -112,8 +112,8 @@ if args.aur:
 
 update_count = len(updates)
 if update_count > 0:
-    info = str(update_count) + ' updates available'
-    short_info = str(update_count) + ' updates'
+    info = str(update_count) + ' ﮮ'
+    short_info = str(update_count) + ' ﮮ'
     matches = matching_updates(updates, args.watch)
     if matches:
         info += ' [{0}]'.format(', '.join(matches))
@@ -121,4 +121,4 @@ if update_count > 0:
     print(message.format(label, args.updates_available_color, info))
     print(message.format(label, args.updates_available_color, short_info))
 elif not args.quiet:
-    print(message.format(label, args.base_color, 'system up to date'))
+    print(message.format(label, args.base_color, 'ﮮ'))
