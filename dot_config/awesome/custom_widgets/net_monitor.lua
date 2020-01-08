@@ -19,7 +19,7 @@ function createNetMonWidgetShort()
         eth_state = "off",
         settings = function()
             if net_now then
-                if net_now.state == "up" then
+                if net_now.carrier == '1' then
                     threshold = 100
                     up_color = colours.fg_normal
                     down_color = colours.fg_normal
