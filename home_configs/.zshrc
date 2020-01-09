@@ -91,6 +91,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ll='ls -la'
 alias l='ls -l'
+alias cbuild='cmake --build _build'
 
 # Colored less output (including man pages)
 export LESS_TERMCAP_mb=$(printf '\e[01;31m') # enter blinking mode - red
