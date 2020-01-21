@@ -18,7 +18,7 @@ function createBatteryWidget()
         timeout = 5,
         settings = function()
             if bat_now.status ~= nil then
-                prefix = '  '
+                prefix = ''
                 if bat_now.perc ~= 'N/A' then
                     local perc = bat_now.perc
                     local fg_color = colours.fg_normal
@@ -37,9 +37,9 @@ function createBatteryWidget()
                         end
                     end
 
-                    widget:set_markup(lain.util.markup(fg_color, prefix .. perc .. '% ' .. time))
+                    widget:set_markup(lain.util.markup(fg_color, prefix .. ' ' .. perc .. '% ' .. time))
                 else
-                    widget:set_markup(lain.util.markup(colours.text_red, prefix .. bat_now.perc))
+                    widget:set_markup(lain.util.markup(colours.text_red, prefix .. ' ' .. bat_now.perc))
                 end
             end
         end
