@@ -14,11 +14,12 @@ local colours = require("colours")
 local tp_smapi = lain.widget.contrib.tp_smapi()
 
 function createBatteryWidget()
+    status = ''
     bat = lain.widget.bat({
         timeout = 5,
         settings = function()
             if bat_now.status ~= nil then
-                prefix = ''
+                prefix = ' '
                 if bat_now.perc ~= 'N/A' then
                     local perc = bat_now.perc
                     local fg_color = colours.fg_normal
@@ -31,18 +32,26 @@ function createBatteryWidget()
                     if bat_now.ac_status == 1 then
                         fg_color = colours.text_orange
                         if bat_now.status == "Full" then
+                            status = 'Full'
                             fg_color = colours.text_green
                             widget:set_markup(lain.util.markup(fg_color, prefix))
                             return
                         end
                     end
 
-                    widget:set_markup(lain.util.markup(fg_color, prefix .. ' ' .. perc .. '% ' .. time))
+                    status = perc .. '% ' .. time
+                    widget:set_markup(lain.util.markup(fg_color, prefix))
                 else
                     widget:set_markup(lain.util.markup(colours.text_red, prefix .. ' ' .. bat_now.perc))
                 end
             end
         end
     })
+    bat_tooltip = awful.tooltip {
+        objects = { bat.widget },
+        timer_function = function()
+            return status
+        end
+    }
     return bat.widget
 end

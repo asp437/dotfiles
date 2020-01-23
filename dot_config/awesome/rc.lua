@@ -123,10 +123,12 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 mytextclock = wibox.widget.textclock()
 cal = lain.widget.cal({
     attach_to = { mytextclock },
+    week_number = 'left',
     notification_preset = {
         font = beautiful.font,
         fg   = beautiful.fg_normal,
-        bg   = beautiful.bg_normal
+        bg   = beautiful.bg_normal,
+        position = 'bottom_right'
     }
 })
 

@@ -13,7 +13,11 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 local colours = require("colours")
 
 function createNetMonWidgetShort()
-    return lain.widget.net{
+    up_speed = 0
+    down_speed = 0
+    arrow_up = ''
+    arrow_down = ''
+    net_widget = lain.widget.net{
         notify = "on",
         wifi_state = "on",
         eth_state = "off",
@@ -29,28 +33,20 @@ function createNetMonWidgetShort()
                     if gears.math.round(net_now.received) > threshold then
                         down_color = colours.text_green
                     end
-                    widget:set_markup(lain.util.markup(up_color, ' ﰵ') .. lain.util.markup(down_color, 'ﰬ'))
+                    up_speed = net_now.sent
+                    down_speed = net_now.received
+                    widget:set_markup(lain.util.markup(up_color, arrow_up) .. lain.util.markup(down_color, arrow_down))
                 else
-                    widget:set_markup(lain.util.markup(colours.text_red, ' 睊 No Connection'))
+                    widget:set_markup(lain.util.markup(colours.text_red, arrow_up .. arrow_down))
                 end
             end
         end
     }
-end
-
-function createNetMonWidget()
-    return lain.widget.net{
-        notify = "on",
-        wifi_state = "on",
-        eth_state = "off",
-        settings = function()
-            if net_now then
-                if net_now.state == "up" then
-                    widget:set_markup(lain.util.markup(colours.fg_normal, ' 直 ﰵ' .. net_now.sent .. ' ﰬ' .. net_now.received))
-                else
-                    widget:set_markup(lain.util.markup(colours.text_red, ' 睊 No Connection'))
-                end
-            end
+    net_tooltip = awful.tooltip {
+        objects = { net_widget.widget },
+        timer_function = function()
+            return ' ' .. up_speed .. '\n ' .. down_speed
         end
     }
+    return net_widget
 end
