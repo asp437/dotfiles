@@ -21,7 +21,7 @@ function createVolumeWidget()
                 widget:set_text("  " .. out[2])
             else
                 -- Mute
-                widget:set_text("  M ")
+                widget:set_text("  M")
             end
         end,
         wibox.widget {

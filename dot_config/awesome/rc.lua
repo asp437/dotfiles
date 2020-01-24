@@ -120,7 +120,7 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+mytextclock = wibox.widget.textclock("%a %b %d %R ")
 cal = lain.widget.cal({
     attach_to = { mytextclock },
     week_number = 'left',
@@ -192,7 +192,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "1:www", "2", "3", "4", "5", "6", "7", "8:mus", "9:tg" }, s, awful.layout.layouts[2])
+    awful.tag({ "1:term", "2", "3", "4", "5", "6", "7", "8:mus", "9:tg" }, s, awful.layout.layouts[2])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
