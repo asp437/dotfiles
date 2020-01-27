@@ -20,7 +20,7 @@ function createSysTempWidget()
                 fg_color = colours.text_red
             end
             prefix = '  '
-            widget:set_markup(lain.util.markup(fg_color, prefix .. coretemp_now))
+            widget:set_markup(lain.util.markup(fg_color, prefix .. math.floor(coretemp_now)))
         end
     }
 end
