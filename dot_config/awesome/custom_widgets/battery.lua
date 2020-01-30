@@ -22,7 +22,7 @@ function createBatteryWidget()
                 prefix = ' '
                 if bat_now.perc ~= 'N/A' then
                     local perc = bat_now.perc
-                    local fg_color = colours.fg_normal
+                    local fg_color = colours.text_orange
 
                     if perc < 20 then
                         fg_color = colours.text_red
@@ -30,10 +30,10 @@ function createBatteryWidget()
 
                     local time = bat_now.time ~= 'N/A' and '(' .. bat_now.time .. ')' or ''
                     if bat_now.ac_status == 1 then
-                        fg_color = colours.text_orange
+                        fg_color = colours.text_green
                         if bat_now.status == "Full" then
                             status = 'Full'
-                            fg_color = colours.text_green
+                            fg_color = colours.fg_normal
                             widget:set_markup(lain.util.markup(fg_color, prefix))
                             return
                         end
