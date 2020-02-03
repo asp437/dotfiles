@@ -7,6 +7,6 @@ function run {
   fi
 }
 
-run albert
+# run albert
 run xbindkeys
 run nm-applet
