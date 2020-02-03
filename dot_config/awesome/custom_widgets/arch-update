@@ -124,8 +124,8 @@ if args.aur:
 update_count = len(updates)
 if args.split_format:
     print(update_count)
-    print('pacman: ' + str(len(raw_updates)))
     print('AUR: ' + str(len(aur_updates)))
+    print('pacman: ' + str(len(raw_updates)))
 elif update_count > 0:
     info = str(update_count) + '  '
     short_info = str(update_count) + '  '

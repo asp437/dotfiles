@@ -13,7 +13,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 local colours = require("colours")
 
 function createUpdatesWidget()
-    status = ''
+    updates_status = ''
     updates_widget = awful.widget.watch(
         "/home/asp437/.config/awesome/custom_widgets/arch-update -s",
         30,
@@ -25,13 +25,13 @@ function createUpdatesWidget()
                 fg_color = colours.text_red
             end
             widget:set_markup(lain.util.markup(fg_color, '  '))
-            status = output[2] .. '\n' .. output[3]
+            updates_status = output[2] .. '\n' .. output[3]
         end
     )
     updates_tooltip = awful.tooltip {
         objects = { updates_widget },
         timer_function = function()
-            return status
+            return updates_status
         end
     }
     return updates_widget
