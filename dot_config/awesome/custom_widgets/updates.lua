@@ -14,7 +14,7 @@ local colours = require("colours")
 
 function createUpdatesWidget()
     return awful.widget.watch(
-        "/home/asp437/.config/awesome/custom_widgets/arch-update -b" .. colours.fg_normal .. " -u" .. colours.text_red,
+        "/home/asp437/.config/awesome/custom_widgets/arch-update -a -b" .. colours.fg_normal .. " -u" .. colours.text_red,
         300,
         function(widget, stdout)
             widget:set_markup(' ' .. stdout)
