@@ -58,6 +58,14 @@ def create_argparse():
         help='Explicitly watch for specified packages. '
         'Listed elements are treated as regular expressions for matching.'
     )
+    parser.add_argument(
+        '-s',
+        '--split_format',
+        action = 'store_const',
+        const = True,
+        default = _default('SPLIT_FORMAT', 'False', strbool),
+        help = 'Split output for main packages and aur'
+    )
     return parser.parse_args()
 
 
@@ -106,12 +114,19 @@ label = os.environ.get("LABEL","")
 message = "{0}<span color='{1}'>{2}</span>"
 args = create_argparse()
 
-updates = get_updates()
+raw_updates = get_updates()
+updates = raw_updates
+aur_updates = []
 if args.aur:
-    updates += get_aur_updates()
+    aur_updates = get_aur_updates()
+    updates += aur_updates
 
 update_count = len(updates)
-if update_count > 0:
+if args.split_format:
+    print(update_count)
+    print('pacman: ' + str(len(raw_updates)))
+    print('AUR: ' + str(len(aur_updates)))
+elif update_count > 0:
     info = str(update_count) + '  '
     short_info = str(update_count) + '  '
     matches = matching_updates(updates, args.watch)
