@@ -12,27 +12,68 @@ local lain = require("lain")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local colours = require("colours")
 
-function createUpdatesWidget()
-    updates_status = ''
-    updates_widget = awful.widget.watch(
-        "/home/asp437/.config/awesome/custom_widgets/arch-update -s",
-        30,
-        function(widget, stdout)
-            output = gears.string.split(stdout, '\n')
-            updates_count = tonumber(output[1])
-            fg_color = colours.fg_normal
-            if updates_count > 0 then
-                fg_color = colours.text_red
-            end
-            widget:set_markup(lain.util.markup(fg_color, '  '))
-            updates_status = output[2] .. '\n' .. output[3]
+function getLinesCount(updateOutput, block_name, metric_name, command)
+    awful.spawn.easy_async(
+        command,
+        function(stdout, stderr, exitreason, exitcode)
+            updateOutput[block_name][metric_name] = gears.string.linecount(stdout) - 1
         end
     )
-    updates_tooltip = awful.tooltip {
-        objects = { updates_widget },
-        timer_function = function()
-            return updates_status
+end
+
+function createUpdatesWidget()
+    local updates_new_widget = wibox.widget {
+        markup = 'test',
+        align  = 'center',
+        valign = 'center',
+        widget = wibox.widget.textbox
+    }
+
+    local widget_text = {}
+    widget_text['updates'] = {}
+    widget_text['count'] = {}
+    widget_text['count']['AUR'] = 0
+    widget_text['count']['pacman'] = 0
+    widget_text['updates']['AUR'] = 0
+    widget_text['updates']['pacman'] = 0
+
+    local update_func = function()
+        updates_count = tonumber(widget_text['updates']['AUR']) + tonumber(widget_text['updates']['pacman'])
+        fg_color = colours.fg_normal
+        if updates_count > 0 then
+            fg_color = colours.text_red
+        end
+        updates_new_widget:set_markup(lain.util.markup(fg_color, '  '))
+        return
+    end
+
+    gears.timer {
+        timeout   = 60,
+        call_now  = true,
+        autostart = true,
+        callback  = function()
+            getLinesCount(widget_text, 'updates', 'pacman', 'checkupdates')
+            getLinesCount(widget_text, 'updates', 'AUR', 'pikaur -Quaq')
+            getLinesCount(widget_text, 'count', 'pacman', 'pacman -Qen')
+            getLinesCount(widget_text, 'count', 'AUR', 'pacman -Qm')
         end
     }
-    return updates_widget
+
+    gears.timer {
+        timeout   = 5,
+        call_now  = true,
+        autostart = true,
+        callback  = update_func
+    }
+
+    updates_tooltip = awful.tooltip {
+        objects = { updates_new_widget },
+        timer_function = function()
+            ret = 'Installed: ' .. widget_text['count']['pacman'] .. ', AUR: ' .. widget_text['count']['AUR'] .. '\n'
+            ret = ret .. 'Updates: ' .. widget_text['updates']['pacman'] .. ' AUR: ' .. widget_text['updates']['AUR']
+            return ret
+        end
+    }
+
+    return updates_new_widget
 end
