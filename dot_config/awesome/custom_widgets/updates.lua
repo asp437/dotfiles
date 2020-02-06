@@ -56,7 +56,7 @@ function createUpdatesWidget()
     end
 
     gears.timer {
-        timeout   = 60,
+        timeout   = 900,
         call_now  = true,
         autostart = true,
         callback  = function()
