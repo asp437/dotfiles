@@ -22,13 +22,6 @@ function getLinesCount(updateOutput, block_name, metric_name, command)
 end
 
 function createUpdatesWidget()
-    local updates_new_widget = wibox.widget {
-        markup = 'test',
-        align  = 'center',
-        valign = 'center',
-        widget = wibox.widget.textbox
-    }
-
     local widget_text = {}
     widget_text['updates'] = {}
     widget_text['count'] = {}
@@ -36,6 +29,21 @@ function createUpdatesWidget()
     widget_text['count']['pacman'] = 0
     widget_text['updates']['AUR'] = 0
     widget_text['updates']['pacman'] = 0
+
+    local updates_new_widget = wibox.widget {
+        markup = 'test',
+        align  = 'center',
+        valign = 'center',
+        widget = wibox.widget.textbox,
+        buttons = gears.table.join(
+            awful.button({}, 1, function(t)
+                getLinesCount(widget_text, 'updates', 'pacman', 'checkupdates')
+                getLinesCount(widget_text, 'updates', 'AUR', 'pikaur -Quaq')
+                getLinesCount(widget_text, 'count', 'pacman', 'pacman -Qen')
+                getLinesCount(widget_text, 'count', 'AUR', 'pacman -Qm')
+            end)
+        )
+    }
 
     local update_func = function()
         updates_count = tonumber(widget_text['updates']['AUR']) + tonumber(widget_text['updates']['pacman'])
@@ -69,8 +77,8 @@ function createUpdatesWidget()
     updates_tooltip = awful.tooltip {
         objects = { updates_new_widget },
         timer_function = function()
-            ret = 'Installed: ' .. widget_text['count']['pacman'] .. ', AUR: ' .. widget_text['count']['AUR'] .. '\n'
-            ret = ret .. 'Updates: ' .. widget_text['updates']['pacman'] .. ' AUR: ' .. widget_text['updates']['AUR']
+            ret = 'Packages: ' .. widget_text['count']['pacman'] .. ' (AUR: ' .. widget_text['count']['AUR'] .. ')\n'
+            ret = ret .. 'Updates: ' .. widget_text['updates']['pacman'] .. ' (AUR: ' .. widget_text['updates']['AUR'] .. ')'
             return ret
         end
     }
