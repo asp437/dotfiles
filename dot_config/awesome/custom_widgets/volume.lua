@@ -8,7 +8,9 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
+local lain = require("lain")
 local hotkeys_popup = require("awful.hotkeys_popup")
+local colours = require("colours")
 
 function createVolumeWidget()
     return awful.widget.watch(
@@ -18,7 +20,11 @@ function createVolumeWidget()
             out = gears.string.split(stdout, ' ')
             if gears.string.startswith(out[1], '0') then
                 -- Volume
-                widget:set_text("  " .. out[2])
+                fg_color = colours.fg_normal
+                if tonumber(out[2]) > 100 then
+                    fg_color = colours.text_red
+                end
+                widget:set_markup(lain.util.markup(fg_color, "  " .. out[2]))
             else
                 -- Mute
                 widget:set_text("  M")
