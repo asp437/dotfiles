@@ -22,6 +22,7 @@ Plug 'ryanoasis/vim-devicons'                           " Dev-icons in buffer li
 Plug 'scrooloose/nerdtree'                              " File navigator for vim
 Plug '/usr/bin/fzf'                                     " Fuzzy search binary for following plugin
 Plug 'junegunn/fzf.vim'                                 " Fuzzy search via fzf
+Plug 'qpkorr/vim-bufkill'                               " Kill buffer without killing window
 "   vim-syntastic/syntastic
 "   tpope/vim-fugitive
 "   majutsushi/tagbar
