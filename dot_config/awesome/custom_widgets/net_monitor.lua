@@ -15,8 +15,8 @@ local colours = require("colours")
 function createNetMonWidgetShort()
     up_speed = 0
     down_speed = 0
-    arrow_up = ''
-    arrow_down = ''
+    arrow_up = ''
+    arrow_down = ''
     net_widget = lain.widget.net{
         notify = "on",
         wifi_state = "on",
@@ -45,7 +45,7 @@ function createNetMonWidgetShort()
     net_tooltip = awful.tooltip {
         objects = { net_widget.widget },
         timer_function = function()
-            return ' ' .. up_speed .. '\n ' .. down_speed
+            return arrow_up .. ' ' .. up_speed .. '\n' .. arrow_down .. ' ' .. down_speed
         end
     }
     return net_widget
