@@ -311,6 +311,9 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "e", function () awful.spawn(file_manager) end,
               {description = "open a file manager", group = "launcher"}),
 
+    awful.key({ modkey,           }, "c", function () awful.spawn('flameshot gui') end,
+              {description = "Take a screenshot", group = "launcher"}),
+
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
