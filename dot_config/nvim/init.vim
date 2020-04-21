@@ -20,14 +20,14 @@ Plug 'itchyny/lightline.vim'                            " Lightweight statusline
 Plug 'mengelbrecht/lightline-bufferline'                " Lightweight bufferline extension
 Plug 'ryanoasis/vim-devicons'                           " Dev-icons in buffer line and other places
 Plug 'scrooloose/nerdtree'                              " File navigator for vim
-Plug '/usr/bin/fzf'                                     " Fuzzy search binary for following plugin
+Plug '~/.fzf'                                           " Fuzzy search binary for following plugin
 Plug 'junegunn/fzf.vim'                                 " Fuzzy search via fzf
+Plug 'qpkorr/vim-bufkill'                               " Kill buffers easy-way
 "   vim-syntastic/syntastic
 "   tpope/vim-fugitive
 "   majutsushi/tagbar
 "   tikhomirov/vim-glsl
 "   nathanaelkane/vim-indent-guides
-"   qpkorr/vim-bufkill
 call plug#end()
 
 " ----Basic options----
@@ -62,7 +62,7 @@ set history=1000                                        " Size of history for vi
 set display=lastline                                    " Display lastline as much as possible
 set nu                                                  " Show number of line
 set colorcolumn=80                                      " Highlight right-most columnt for most code-styles
-set relativenumber                                      " Relative number of line
+set number relativenumber                               " Relative number of line
 set scrolloff=5                                         " Scroll offset around cursor
 set cursorline                                          " Highlight cursor line
 set laststatus=2                                        " Always show statusline on last window
@@ -151,8 +151,8 @@ let g:LanguageClient_serverCommands = {
     \ 'python': ['pyls'],
     \ 'go': ['gopls'],
     \ 'ruby': ['solargraph', 'stdio'],
-    \ 'cpp': ['clangd'],
-    \ 'c': ['clangd']
+    \ 'cpp': ['clangd-6.0'],
+    \ 'c': ['clangd-6.0']
     \ }
 
 let g:deoplete#enable_at_startup = 1                    " Enable deoplete completion
@@ -191,7 +191,10 @@ let g:mapleader=' '
 " Faster <esc> by pressing jk in insert mode
 inoremap jk             <esc>
 nnoremap q              <Nop>
-nnoremap <Esc>          :nohlsearch<CR> 
+nnoremap <Esc>          :nohlsearch<CR>
+
+" Windows:
+nnoremap <Leader>we     :NERDTreeFocus<CR>
 
 " Toggles:
 nnoremap <Leader>tl     :set list!<CR>
@@ -211,15 +214,17 @@ nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <Leader>sr :source $MYVIMRC<CR>
 nnoremap <Leader>st :split term://zsh<CR>
 nnoremap <Leader>sh :vert help 
-nnoremap <Leader>ss :checkhealth<CR>
+nnoremap <Leader>si :checkhealth<CR>
 
 " Buffers:
 " nnoremap <leader>sv :source $MYVIMRC<cr>
 " TODO: Buffers and tabs hotkeys
+nnoremap <Leader>q :BD<CR>
 nnoremap <Leader>n :bnext<CR>
 nnoremap <Leader>p :bprev<CR>
 nnoremap <Leader>bn :bnext<CR>
 nnoremap <Leader>bp :bprev<CR>
+nnoremap <Leader>bd :BD<CR>
 " TODO: Create following mappings via loop
 nnoremap <Leader>1 :b1<CR>
 nnoremap <Leader>2 :b2<CR>
