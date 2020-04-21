@@ -60,7 +60,7 @@ beautiful.init("/home/asp437/.config/awesome/theme.lua")
 naughty.config.defaults['icon_size'] = 100
 
 -- This is used later as the default terminal and editor to run.
-terminal = "kitty"
+terminal = "alacritty"
 file_manager = "pcmanfm"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
@@ -120,13 +120,15 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+mytextclock = wibox.widget.textclock("%a %b %d %R ")
 cal = lain.widget.cal({
     attach_to = { mytextclock },
+    week_number = 'left',
     notification_preset = {
         font = beautiful.font,
         fg   = beautiful.fg_normal,
-        bg   = beautiful.bg_normal
+        bg   = beautiful.bg_normal,
+        position = 'bottom_right'
     }
 })
 
@@ -190,7 +192,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "1:www", "2", "3", "4", "5", "6", "7", "8:mus", "9:tg" }, s, awful.layout.layouts[2])
+    awful.tag({ "1:term", "2", "3", "4", "5", "6", "7", "8:mus", "9:tg" }, s, awful.layout.layouts[2])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -232,7 +234,7 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             -- updates
             createUpdatesWidget(),
-            createNetMonWidget(),
+            createNetMonWidgetShort(),
             createBatteryWidget(),
             createSysTempWidget(),
             createCPUUsageWidget(),
@@ -604,4 +606,17 @@ awful.spawn.with_shell("~/.config/awesome/autostart.sh")
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+
+screen.connect_signal("arrange", function (s)
+    local max = s.selected_tag.layout.name == "max"
+    local only_one = #s.tiled_clients == 1 -- use tiled_clients so that other floating windows don't affect the count
+    -- but iterate over clients instead of tiled_clients as tiled_clients doesn't include maximized windows
+    for _, c in pairs(s.clients) do
+        if (max or only_one) and not c.floating or c.maximized then
+            c.border_width = 0
+        else
+            c.border_width = beautiful.border_width
+        end
+    end
+end)
 -- }}}

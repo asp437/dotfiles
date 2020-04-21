@@ -14,14 +14,15 @@ local colours = require("colours")
 local tp_smapi = lain.widget.contrib.tp_smapi()
 
 function createBatteryWidget()
+    status = ''
     bat = lain.widget.bat({
         timeout = 5,
         settings = function()
             if bat_now.status ~= nil then
-                prefix = '  '
+                prefix = ' '
                 if bat_now.perc ~= 'N/A' then
                     local perc = bat_now.perc
-                    local fg_color = colours.fg_normal
+                    local fg_color = colours.text_orange
 
                     if perc < 20 then
                         fg_color = colours.text_red
@@ -29,19 +30,28 @@ function createBatteryWidget()
 
                     local time = bat_now.time ~= 'N/A' and '(' .. bat_now.time .. ')' or ''
                     if bat_now.ac_status == 1 then
-                        fg_color = colours.text_orange
+                        fg_color = colours.text_green
                         if bat_now.status == "Full" then
-                            fg_color = colours.text_green
-                            time = ''
+                            status = 'Full'
+                            fg_color = colours.fg_normal
+                            widget:set_markup(lain.util.markup(fg_color, prefix))
+                            return
                         end
                     end
 
-                    widget:set_markup(lain.util.markup(fg_color, prefix .. perc .. '% ' .. time))
+                    status = perc .. '% ' .. time
+                    widget:set_markup(lain.util.markup(fg_color, prefix))
                 else
-                    widget:set_markup(lain.util.markup(colours.text_red, prefix .. bat_now.perc))
+                    widget:set_markup(lain.util.markup(colours.text_red, prefix .. ' ' .. bat_now.perc))
                 end
             end
         end
     })
+    bat_tooltip = awful.tooltip {
+        objects = { bat.widget },
+        timer_function = function()
+            return status
+        end
+    }
     return bat.widget
 end

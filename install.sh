@@ -2,6 +2,7 @@
 
 dir=$(pwd -P)
 
+rm -rf ~/.config/alacritty
 rm -rf ~/.config/albert
 rm -rf ~/.config/awesome
 rm -rf ~/.config/colours
@@ -28,6 +29,7 @@ ln -f -s $dir/home_configs/.tmux.conf ~/.tmux.conf
 ln -f -s $dir/home_configs/.xbindkeysrc ~/.xbindkeysrc
 ln -f -s $dir/home_configs/.xinitrc ~/.xinitrc
 
+ln -f -s $dir/dot_config/alacritty ~/.config/alacritty
 ln -f -s $dir/dot_config/albert ~/.config/albert
 ln -f -s $dir/dot_config/awesome ~/.config/awesome
 ln -f -s $dir/dot_config/colours ~/.config/colours

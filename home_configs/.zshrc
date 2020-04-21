@@ -1,6 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/arcadia:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/asp437/.oh-my-zsh
@@ -90,6 +91,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ll='ls -la'
 alias l='ls -l'
+alias cbuild='cmake --build _build'
 
 # Colored less output (including man pages)
 export LESS_TERMCAP_mb=$(printf '\e[01;31m') # enter blinking mode - red
@@ -125,7 +127,7 @@ export PATH=$HOME/.gem/ruby/2.6.0/bin:$PATH
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
     ssh-agent > "$XDG_RUNTIME_DIR/ssh-agent.env"
 fi
-if [[ ! "$SSH_AUTH_SOCK" ]]; then
-    eval "$(<"$XDG_RUNTIME_DIR/ssh-agent.env")"
-fi
+# if [[ ! "$SSH_AUTH_SOCK" ]]; then
+    source $XDG_RUNTIME_DIR/ssh-agent.env
+# fi
 
