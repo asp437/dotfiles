@@ -131,3 +131,5 @@ fi
     source $XDG_RUNTIME_DIR/ssh-agent.env
 # fi
 
+alias junk='cd /home/asp437/arcadia/junk/asp437'
+
