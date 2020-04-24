@@ -23,6 +23,7 @@ Plug 'scrooloose/nerdtree'                              " File navigator for vim
 Plug '~/.fzf'                                           " Fuzzy search binary for following plugin
 Plug 'junegunn/fzf.vim'                                 " Fuzzy search via fzf
 Plug 'qpkorr/vim-bufkill'                               " Kill buffers easy-way
+Plug 'liuchengxu/vista.vim'                             " Outline for the code via LSP
 "   vim-syntastic/syntastic
 "   tpope/vim-fugitive
 "   majutsushi/tagbar
@@ -152,8 +153,8 @@ let g:LanguageClient_serverCommands = {
     \ 'python': ['pyls'],
     \ 'go': ['gopls'],
     \ 'ruby': ['solargraph', 'stdio'],
-    \ 'cpp': ['clangd-6.0'],
-    \ 'c': ['clangd-6.0']
+    \ 'cpp': ['clangd'],
+    \ 'c': ['clangd']
     \ }
 
 let g:deoplete#enable_at_startup = 1                    " Enable deoplete completion
@@ -292,3 +293,5 @@ endfunction
 command! -nargs=? -range=% Space2tab call IndentConvert(<line1>,<line2>,0,<q-args>)
 command! -nargs=? -range=% Tab2space call IndentConvert(<line1>,<line2>,1,<q-args>)
 command! -nargs=? -range=% Retabindent call IndentConvert(<line1>,<line2>,&et,<q-args>)
+
+let g:vista_default_executive = 'lcn'
