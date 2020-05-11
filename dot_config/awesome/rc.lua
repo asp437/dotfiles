@@ -308,6 +308,9 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
 
+    awful.key({ modkey,           }, "d", function () awful.spawn('rofi -show') end,
+              {description = "open rofi", group = "launcher"}),
+
     awful.key({ modkey,           }, "e", function () awful.spawn(file_manager) end,
               {description = "open a file manager", group = "launcher"}),
 
@@ -431,7 +434,7 @@ for i = 1, 10 do
                   end,
                   {description = "view tag #"..(1 + ((i - 1) % 5)), group = "tag"}),
         -- Toggle tag display.
-        awful.key({ modkey, "Control" }, "#" .. (1 + ((i - 1) % 5)) + 9,
+        awful.key({ modkey, "Control" }, "#" .. i + 9,
                   function ()
                       local screen = awful.screen.focused()
                       local tag = screen.tags[1 + ((i - 1) % 5)]
@@ -441,7 +444,7 @@ for i = 1, 10 do
                   end,
                   {description = "toggle tag #" .. (1 + ((i - 1) % 5)), group = "tag"}),
         -- Move client to tag.
-        awful.key({ modkey, "Shift" }, "#" .. (1 + ((i - 1) % 5)) + 9,
+        awful.key({ modkey, "Shift" }, "#" .. i + 9,
                   function ()
                       if client.focus then
                           local tag = client.focus.screen.tags[1 + ((i - 1) % 5)]
@@ -452,7 +455,7 @@ for i = 1, 10 do
                   end,
                   {description = "move focused client to tag #"..(1 + ((i - 1) % 5)), group = "tag"}),
         -- Toggle tag on focused client.
-        awful.key({ modkey, "Control", "Shift" }, "#" .. (1 + ((i - 1) % 5)) + 9,
+        awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9,
                   function ()
                       if client.focus then
                           local tag = client.focus.screen.tags[1 + ((i - 1) % 5)]
