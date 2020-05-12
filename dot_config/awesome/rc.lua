@@ -120,7 +120,7 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock("%a %b %d %R ")
+mytextclock = wibox.widget.textclock("%R ")
 cal = lain.widget.cal({
     attach_to = { mytextclock },
     week_number = 'left',
