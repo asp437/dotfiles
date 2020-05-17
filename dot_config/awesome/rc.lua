@@ -284,6 +284,25 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
               {description = "show main menu", group = "awesome"}),
 
+    -- Media keys
+    awful.key({}, "XF86MonBrightnessUp", function () awful.spawn('xbacklight -inc 5') end,
+              {description = "Increase screen brightness", group = "Media"}),
+    awful.key({}, "XF86MonBrightnessDown", function () awful.spawn('xbacklight -dec 5') end,
+              {description = "Decrease screen brightness", group = "Media"}),
+    awful.key({}, "XF86AudioRaiseVolume", function () awful.spawn('pulsemixer --change-volume +5') end,
+              {description = "Increase volume", group = "Media"}),
+    awful.key({}, "XF86AudioLowerVolume", function () awful.spawn('pulsemixer --change-volume -5') end,
+              {description = "Decrease volume", group = "Media"}),
+    awful.key({}, "XF86AudioMute", function () awful.spawn('pulsemixer --toggle-mute') end,
+              {description = "Toggle mute", group = "Media"}),
+
+    awful.key({}, "XF86AudioNext", function () awful.spawn('dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next') end,
+              {description = "Next track", group = "Spotify"}),
+    awful.key({}, "XF86AudioPrev", function () awful.spawn('dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous') end,
+              {description = "Prev track", group = "Spotify"}),
+    awful.key({}, "XF86AudioPlay", function () awful.spawn('dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause') end,
+              {description = "Play/Pause", group = "Spotify"}),
+
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
               {description = "swap with next client by index", group = "client"}),

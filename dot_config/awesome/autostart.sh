@@ -8,5 +8,5 @@ function run {
 }
 
 # run albert
-run xbindkeys
+# run xbindkeys
 run nm-applet
