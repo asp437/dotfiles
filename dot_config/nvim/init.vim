@@ -263,6 +263,7 @@ autocmd FileType     cpp nnoremap <localleader>br :!g++ -std=c++17 -w % -o /tmp/
 autocmd FileType    rust nnoremap <localleader>br :!cargo script %<CR>
 autocmd FileType  python nnoremap <localleader>br :!python %<CR>
 
+autocmd FileType     cpp nnoremap <localleader>bb :!cmake --build _build<CR>
 
 " From https://github.com/tl182/dotfiles/blob/master/.config/nvim/init.vim
 " Return indent (all whitespace at start of a line), converted from

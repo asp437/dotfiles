@@ -14,6 +14,7 @@ local colours = require("colours")
 
 function createSysTempWidget()
     return lain.widget.temp {
+        tempfile = "/sys/devices/virtual/thermal/thermal_zone1/temp",
         settings = function()
             fg_color = colours.fg_normal
             if coretemp_now > 55 then

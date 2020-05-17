@@ -60,7 +60,7 @@ beautiful.init("/home/asp437/.config/awesome/theme.lua")
 naughty.config.defaults['icon_size'] = 100
 
 -- This is used later as the default terminal and editor to run.
-terminal = "alacritty"
+terminal = "kitty"
 file_manager = "pcmanfm"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
