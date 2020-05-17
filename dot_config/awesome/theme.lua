@@ -12,7 +12,7 @@ local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
-theme.font          = "Source Code Pro 12"
+theme.font          = "Source Code Pro 14"
 -- theme.font          = "MesloLGM Nerd Font RegularForPowerline 11"
 
 theme.bg_normal     = colours.bg_normal
@@ -27,7 +27,7 @@ theme.fg_urgent     = colours.fg_urgent
 theme.fg_minimize   = colours.fg_minimize
 
 theme.useless_gap   = dpi(0)
-theme.border_width  = dpi(1)
+theme.border_width  = dpi(2)
 theme.border_normal = colours.border_normal
 theme.border_focus  = colours.border_focus
 theme.border_marked = colours.border_marked
@@ -46,7 +46,7 @@ theme.border_marked = colours.border_marked
 -- theme.taglist_bg_focus = "#ff0000"
 
 -- Generate taglist squares:
-local taglist_square_size = dpi(4)
+local taglist_square_size = dpi(5)
 theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
     taglist_square_size, theme.fg_normal
 )
