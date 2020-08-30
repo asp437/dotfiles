@@ -82,6 +82,7 @@ set synmaxcol=128                                       " Highlight clumns (defa
 set title                                               " Set terminal's title
 set termguicolors                                       " Enable True Color
 set exrc                                                " Read local vimrc
+set completeopt=noinsert
 " set belloff=all                                         " Disable bell for all events
 " Show tab and other hidden symbols
 if has('multi_byte') && &encoding ==# 'utf-8'
