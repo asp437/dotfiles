@@ -65,6 +65,7 @@ set nu                                                  " Show number of line
 set colorcolumn=80                                      " Highlight right-most columnt for most code-styles
 set number relativenumber                               " Relative number of line
 set scrolloff=5                                         " Scroll offset around cursor
+set sidescrolloff=5                                     " Scroll offset around cursor (horizontal)
 set cursorline                                          " Highlight cursor line
 set laststatus=2                                        " Always show statusline on last window
 set list                                                " Show tabs and spaces
