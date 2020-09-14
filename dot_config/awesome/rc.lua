@@ -26,6 +26,7 @@ require("custom_widgets/ram_usage")
 require("custom_widgets/net_monitor")
 require("custom_widgets/sys_temp")
 require("custom_widgets/updates")
+require("custom_widgets/spotify")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -187,6 +188,16 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
+spotify_widget = createSpotifyWidget()
+updates_widget = createUpdatesWidget()
+netmon_widget = createNetMonWidgetShort()
+battery_widget = createBatteryWidget()
+temp_widget = createSysTempWidget()
+cpu_widget = createCPUUsageWidget()
+ram_widget = createRAMUsageWidget()
+backlight_widget = createBacklightWidget()
+volume_widget = createVolumeWidget()
+
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
@@ -233,14 +244,15 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             -- updates
-            createUpdatesWidget(),
-            createNetMonWidgetShort(),
-            createBatteryWidget(),
-            createSysTempWidget(),
-            createCPUUsageWidget(),
-            createRAMUsageWidget(),
-            createBacklightWidget(),
-            createVolumeWidget(),
+            spotify_widget,
+            updates_widget,
+            netmon_widget,
+            battery_widget,
+            temp_widget,
+            cpu_widget,
+            ram_widget,
+            backlight_widget,
+            volume_widget,
             mykeyboardlayout,
             mytextclock,
             wibox.widget.systray(),
