@@ -15,7 +15,7 @@ local colours = require("colours")
 
 function createSpotifyWidget()
     local widget = wibox.widget {
-        markup = 'Spotify',
+        markup = ' Spotify',
         align  = 'center',
         valign = 'center',
         widget = wibox.widget.textbox,
@@ -35,7 +35,10 @@ function createSpotifyWidget()
     local request_succ = dbus.request_name('session', name)
     local tooltip_text
     gears.debug.dump("request_succ: " .. tostring(request_succ))
-    dbus.add_match('session', "type='signal', interface='org.freedesktop.DBus.Properties', path='/org/mpris/MediaPlayer2', member='PropertiesChanged'")
+    dbus.add_match(
+        'session',
+        "type='signal', interface='org.freedesktop.DBus.Properties', path='/org/mpris/MediaPlayer2', member='PropertiesChanged'"
+    )
     signal_handler = function (...)
         gears.debug.dump('signal caught')
         local data = {...}
@@ -51,7 +54,6 @@ function createSpotifyWidget()
     local signal_interface = 'org.freedesktop.DBus.Properties'
     dbus.disconnect_signal(signal_interface, signal_handler)
     dbus.connect_signal(signal_interface, signal_handler )
-
 
     return widget
 end
