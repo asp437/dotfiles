@@ -104,6 +104,7 @@ export LESS_TERMCAP_us=$(printf '\e[04;36m') # enter underline mode - cyan
 
 alias tmux="env TERM=xterm-256color tmux"
 export EDITOR="nvim"
+export TERM=xterm-256color
 
 # Alternative theme
 # export LESS_TERMCAP_mb=$(printf '\e[01;31m') # enter blinking mode

@@ -1,2 +1,2 @@
 #!/bin/bash
-i3lock -c 222222 -n
+i3lock -c 222222 -n --keylayout 2 -k

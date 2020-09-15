@@ -197,13 +197,14 @@ cpu_widget = createCPUUsageWidget()
 ram_widget = createRAMUsageWidget()
 backlight_widget = createBacklightWidget()
 volume_widget = createVolumeWidget()
+systray_widget = wibox.widget.systray()
 
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "1:term", "2:web", "3:misc", "4:music", "5:tg" }, s, awful.layout.layouts[2])
+    awful.tag({ "1", "2", "3", "4", "5" }, s, awful.layout.layouts[2])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -243,7 +244,6 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            -- updates
             spotify_widget,
             updates_widget,
             netmon_widget,
@@ -255,7 +255,7 @@ awful.screen.connect_for_each_screen(function(s)
             volume_widget,
             mykeyboardlayout,
             mytextclock,
-            wibox.widget.systray(),
+            systray_widget,
             s.mylayoutbox,
         },
     }
