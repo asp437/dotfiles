@@ -48,7 +48,7 @@ function createSpotifyWidget()
             tooltip_text = 'Artist: ' .. tostring(content['Metadata']['xesam:artist'][1]) .. '\n'
             tooltip_text = tooltip_text .. 'Track: ' .. tostring(content['Metadata']['xesam:title']) .. '\n'
             tooltip_text = tooltip_text .. 'Album: ' .. tostring(content['Metadata']['xesam:album'])
-            tooltip.markup = lain.util.markup(fg_color, tooltip_text)
+            tooltip.text = tooltip_text
         end
     end
 
