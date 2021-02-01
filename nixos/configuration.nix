@@ -18,6 +18,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.useOSProber = true;
+  boot.loader.grub.memtest86.enable = true;
+  boot.loader.grub.default = "saved";
   boot.supportedFilesystems = [ "ntfs" ];
 
   networking.networkmanager.enable = true;
@@ -50,6 +52,8 @@
 
   environment.shellAliases = {
   };
+
+  environment.variables.XDG_CONFIG_HOME = "$HOME/.config";
 
   environment.etc."polkit-1/rules.d/00-mount-internal.rules".text = ''
     polkit.addRule(function(action, subject) {
@@ -117,7 +121,6 @@
     protobuf
     go
     go-protobuf
-    xscreensaver
     thunderbolt
     bolt
     usb-modeswitch
@@ -128,6 +131,8 @@
     clang
     clang-tools
     nodejs
+    p7zip
+    tree
 
     wireshark
 
@@ -137,15 +142,22 @@
     pavucontrol
     kbdd
     arandr
+    flameshot
 
     pcmanfm
+    gnome3.nautilus
+    gnome3.sushi
+    xscreensaver
     feh
     spotify
     mpv
     imagemagick
+    evince
 
     vanilla-dmz
+    paper-icon-theme
 
+    brave
     chromium
     firefox
     tdesktop
@@ -166,7 +178,7 @@
   # };
   programs.nm-applet.enable = true;
   programs.firejail.enable = true;
-  programs.steam.enable = false;
+  programs.steam.enable = true;
   programs.tmux.enable = true;
   programs.wireshark.enable = true;
   programs.neovim.enable = true;
@@ -241,11 +253,11 @@
 
   hardware.opengl.enable = true;
   # OpenGL for 32bit applications
-  hardware.opengl.driSupport32Bit = false;
+  hardware.opengl.driSupport32Bit = true;
 
   # Enable touchpad support.
   services.xserver.libinput.enable = true;
-  services.xserver.libinput.tapping = false;
+  services.xserver.libinput.touchpad.tapping = false;
   # services.xserver.libinput.naturalScrolling = true;
 
   services.udisks2.enable = true;
@@ -266,6 +278,9 @@
   };
   users.groups.network = {
     name = "network";
+  };
+  users.groups.docker = {
+    name = "docker";
   };
   users.users.asp437 = {
     isNormalUser = true;
