@@ -1,34 +1,41 @@
-"  ----Plugins----
-call plug#begin('~/.local/share/nvim/plugins')
-" Write list of plugins with comments
-Plug 'prabirshrestha/async.vim'                         " Async jobs for vim and neovim
+call plug#begin('~/.vim/plugged')
 " ColorSchemes:
+Plug 'flazz/vim-colorschemes'
 Plug 'morhetz/gruvbox'
 Plug 'tomasr/molokai'
 Plug 'ajh17/Spacegray.vim'
 Plug 'lifepillar/vim-solarized8'
 
 " AutoComplete:
-Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' } " Language Server Protocol client
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Plugin for async autocompletion via lsp
+" Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' } " Language Server Protocol client
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Plugin for async autocompletion via lsp
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Langs:
 "   fatih/vim-go
-"
+"   rust-lang/rust.vim
+"   tikhomirov/vim-glsl
+
+Plug 'sheerun/vim-polyglot'                             " Collection of language packs
+
 " Other:
 Plug 'itchyny/lightline.vim'                            " Lightweight statusline extension
 Plug 'mengelbrecht/lightline-bufferline'                " Lightweight bufferline extension
 Plug 'ryanoasis/vim-devicons'                           " Dev-icons in buffer line and other places
 Plug 'scrooloose/nerdtree'                              " File navigator for vim
-Plug '~/.fzf'                                           " Fuzzy search binary for following plugin
-Plug 'junegunn/fzf.vim'                                 " Fuzzy search via fzf
 Plug 'qpkorr/vim-bufkill'                               " Kill buffers easy-way
 Plug 'liuchengxu/vista.vim'                             " Outline for the code via LSP
+Plug 'ctrlpvim/ctrlp.vim'                               " Fuzzy search in files, buffers, tags
+Plug 'FelikZ/ctrlp-py-matcher'                          " Faster matcher for ctrlp (does it require original?)
+Plug 'jaxbot/semantic-highlight.vim'                    " Uniqe color for every variable
+Plug 'jreybert/vimagit'                                 " Some git plugin
+Plug 'nathanaelkane/vim-indent-guides'                  " More verbose color highlighting of identation
+Plug 'tomtom/tcomment_vim'                              " Comment/uncomment hotkeys wrt. language
+Plug 'prabirshrestha/async.vim'                         " Async jobs for vim and neovim
 "   vim-syntastic/syntastic
 "   tpope/vim-fugitive
 "   majutsushi/tagbar
-"   tikhomirov/vim-glsl
-"   nathanaelkane/vim-indent-guides
 call plug#end()
 
 " ----Basic options----
@@ -42,6 +49,9 @@ set splitbelow                                          " Split below current wi
 set splitright                                          " Split right of the current window
 set nospell                                             " Enable spell check
 set textwidth=0                                         " Hard-wrap long lines as you type them
+
+" Mapping for russian symbols in normal mode
+set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
 " Search Configuration:
 set hls                                                 " Search highlight
@@ -62,7 +72,7 @@ set history=1000                                        " Size of history for vi
 " Appearance Configuration:
 set display=lastline                                    " Display lastline as much as possible
 set nu                                                  " Show number of line
-set colorcolumn=80                                      " Highlight right-most columnt for most code-styles
+set colorcolumn=120                                     " Highlight right-most columnt for most code-styles
 set number relativenumber                               " Relative number of line
 set scrolloff=5                                         " Scroll offset around cursor
 set sidescrolloff=5                                     " Scroll offset around cursor (horizontal)
@@ -126,7 +136,15 @@ let g:lightline.component_type   = {'buffers': 'tabsel'}
 let g:lightline#bufferline#show_number = 1              " Show buffer numbers
 let g:lightline#bufferline#enable_devicons = 1          " Enable special dev-icons
 let g:lightline#bufferline#unicode_symbols = 1          " Enable unicode special symbols
-colorscheme spacegray
+" colorscheme spacegray
+colorscheme PerfectDark
+
+let g:indent_guides_enable_on_vim_startup = 1           " Enable indent guides plugin on startup
+
+" Highlight extra whitespaces at the end
+highlight ExtraWhitespace ctermbg=red guibg=red
+au BufNew,BufEnter,BufWinEnter,WinEnter,BufNew * match ExtraWhitespace /\s\+$/
+
 
 " TODO: Statusline
 " TODO: Tabline
@@ -204,10 +222,11 @@ nnoremap <Leader>we     :NERDTreeFocus<CR>
 nnoremap <Leader>tl     :set list!<CR>
 nnoremap <Leader>ts     :set spell!<CR>
 nnoremap <Leader>tc     :call ToggleColorcolumn()<CR>
-nnoremap <Leader>th     :call ToggleHardwrap()<CR>
+" nnoremap <Leader>th     :call ToggleHardwrap()<CR>
 nnoremap <Leader>tw     :set wrap!<CR>
 nnoremap <Leader>tb     :call ToggleBackground()<CR>
 nnoremap <Leader>te     :NERDTreeToggle<CR>
+nnoremap <Leader>th     :SemanticHighlightToggle<CR>
 " TODO: tagbar
 " nnoremap <Leader>tt     :NERDTreeToggle<CR>
 
