@@ -89,7 +89,7 @@ set showfulltag                                         " Show tag and info in i
 set showmatch                                           " Highlight matched bracket
 set showmode                                            " Show current mode
 set showtabline=2                                       " Always show tabline
-set synmaxcol=128                                       " Highlight clumns (default 3000, 0 - no limit)
+set synmaxcol=3000                                      " Highlight clumns (default 3000, 0 - no limit)
 set title                                               " Set terminal's title
 set termguicolors                                       " Enable True Color
 set exrc                                                " Read local vimrc
@@ -137,9 +137,16 @@ let g:lightline#bufferline#show_number = 1              " Show buffer numbers
 let g:lightline#bufferline#enable_devicons = 1          " Enable special dev-icons
 let g:lightline#bufferline#unicode_symbols = 1          " Enable unicode special symbols
 " colorscheme spacegray
-colorscheme PerfectDark
+colorscheme space-vim-dark
 
+
+let g:indent_guides_space_guides = 1
 let g:indent_guides_enable_on_vim_startup = 1           " Enable indent guides plugin on startup
+let g:indent_guides_auto_colors = 0
+highlight IndentGuidesOdd  guibg=#262626
+highlight IndentGuidesEven guibg=#303030
+autocmd VimEnter,Colorscheme * :highlight IndentGuidesOdd  guibg=#262626
+autocmd VimEnter,Colorscheme * :highlight IndentGuidesEven guibg=#303030
 
 " Highlight extra whitespaces at the end
 highlight ExtraWhitespace ctermbg=red guibg=red
