@@ -33,6 +33,7 @@ Plug 'jreybert/vimagit'                                 " Some git plugin
 Plug 'nathanaelkane/vim-indent-guides'                  " More verbose color highlighting of identation
 Plug 'tomtom/tcomment_vim'                              " Comment/uncomment hotkeys wrt. language
 Plug 'prabirshrestha/async.vim'                         " Async jobs for vim and neovim
+Plug 'jremmen/vim-ripgrep'                              " Use rg for search the code
 "   vim-syntastic/syntastic
 "   tpope/vim-fugitive
 "   majutsushi/tagbar
@@ -268,8 +269,8 @@ nnoremap <Leader>9 :b9<CR>
 nnoremap <Leader>0 :b10<CR>
 
 " Searching
-nnoremap <Leader>sf :Files<CR>
-nnoremap <Leader>sb :Buffers<CR>
+nnoremap <Leader>sf :CtrlP<CR>
+nnoremap <Leader>sb :CtrlPBuffer<CR>
 nnoremap <Leader>ss :Rg<CR>
 nnoremap <Leader>sc :Commands<CR>
 
