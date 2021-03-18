@@ -48,9 +48,11 @@
     source-code-pro
     dejavu_fonts
     liberation_ttf
+    nerdfonts
   ]);
 
   environment.shellAliases = {
+    ll = "ls -la";
   };
 
   environment.variables.XDG_CONFIG_HOME = "$HOME/.config";
@@ -133,6 +135,10 @@
     nodejs
     p7zip
     tree
+    lm_sensors
+    gnupg
+    pinentry
+    polybarFull
 
     wireshark
 
@@ -156,6 +162,10 @@
 
     vanilla-dmz
     paper-icon-theme
+
+    krita
+    pinta
+    font-manager
 
     brave
     chromium
@@ -183,6 +193,11 @@
   programs.wireshark.enable = true;
   programs.neovim.enable = true;
   programs.neovim.defaultEditor = true;
+  programs.neovim.configure = {
+    customRC = ''
+    source /home/asp437/.config/nvim/init.vim
+    '';
+  };
   # programs.go.enable = true;
 
   programs.zsh.enable = true;
@@ -230,7 +245,7 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.xserver.layout = "us,ru";
-  services.xserver.xkbOptions = "grp:shifts_toggle,grp:win_space_toggle,ctrl:swapcaps";
+  services.xserver.xkbOptions = "grp:shifts_toggle,ctrl:swapcaps";
 
   services.xserver.windowManager.i3.enable = true; # Use i3wm
   services.picom.enable = true; # Since i3wm doesn't include compositor, use picom (ex. compton)
