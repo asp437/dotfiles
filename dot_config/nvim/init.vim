@@ -137,13 +137,14 @@ let g:lightline.component_type   = {'buffers': 'tabsel'}
 let g:lightline#bufferline#show_number = 1              " Show buffer numbers
 let g:lightline#bufferline#enable_devicons = 1          " Enable special dev-icons
 let g:lightline#bufferline#unicode_symbols = 1          " Enable unicode special symbols
-" colorscheme spacegray
+" colorscheme solarized8_dark
 colorscheme space-vim-dark
 
 
 let g:indent_guides_space_guides = 1
 let g:indent_guides_enable_on_vim_startup = 1           " Enable indent guides plugin on startup
 let g:indent_guides_auto_colors = 0
+" TODO: Use colors from colorscheme
 highlight IndentGuidesOdd  guibg=#262626
 highlight IndentGuidesEven guibg=#303030
 autocmd VimEnter,Colorscheme * :highlight IndentGuidesOdd  guibg=#262626
@@ -248,7 +249,6 @@ nnoremap <Leader>sh :vert help
 nnoremap <Leader>si :checkhealth<CR>
 
 " Buffers:
-" nnoremap <leader>sv :source $MYVIMRC<cr>
 " TODO: Buffers and tabs hotkeys
 nnoremap <Leader>q :BD<CR>
 nnoremap <Leader>n :bnext<CR>
@@ -278,11 +278,9 @@ nnoremap <Leader>sc :Commands<CR>
 nnoremap <Leader>gd :call LanguageClient#textDocument_definition()<CR>
 
 " Windows:
-" nnoremap <leader>sv :source $MYVIMRC<cr>
 " TODO: Panel/Windows hotkeys
 
 " Git:
-" nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " TODO: Build hotkeys?
 " Quick run
