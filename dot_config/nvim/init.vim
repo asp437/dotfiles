@@ -30,6 +30,7 @@ Plug 'ctrlpvim/ctrlp.vim'                               " Fuzzy search in files,
 Plug 'FelikZ/ctrlp-py-matcher'                          " Faster matcher for ctrlp (does it require original?)
 Plug 'jaxbot/semantic-highlight.vim'                    " Uniqe color for every variable
 Plug 'jreybert/vimagit'                                 " Some git plugin
+Plug 'airblade/vim-gitgutter'                           " Show git status line by line
 Plug 'nathanaelkane/vim-indent-guides'                  " More verbose color highlighting of identation
 Plug 'tomtom/tcomment_vim'                              " Comment/uncomment hotkeys wrt. language
 Plug 'prabirshrestha/async.vim'                         " Async jobs for vim and neovim
@@ -132,8 +133,10 @@ let g:gruvbox_improved_warnings=1                       " Extra hilight warnings
 let g:spacegray_use_italic=1                            " Enables italic text
 let g:lightline = { 'colorscheme': 'Tomorrow_Night' }   " Apperance for statusline
 let g:lightline.tabline = {'left': [['buffers']], 'right': [[]]} " Configure upper statusline content
+let g:lightline.active = {'left': [ ['mode', 'paste'], [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified']] }
 let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
 let g:lightline.component_type   = {'buffers': 'tabsel'}
+let g:lightline.component_function = {'cocstatus': 'coc#status', 'currentfunction': 'CocCurrentFunction'}
 let g:lightline#bufferline#show_number = 1              " Show buffer numbers
 let g:lightline#bufferline#enable_devicons = 1          " Enable special dev-icons
 let g:lightline#bufferline#unicode_symbols = 1          " Enable unicode special symbols
@@ -153,6 +156,10 @@ autocmd VimEnter,Colorscheme * :highlight IndentGuidesEven guibg=#303030
 " Highlight extra whitespaces at the end
 highlight ExtraWhitespace ctermbg=red guibg=red
 au BufNew,BufEnter,BufWinEnter,WinEnter,BufNew * match ExtraWhitespace /\s\+$/
+
+function! CocCurrentFunction()
+    return get(b:, 'coc_current_function', '')
+endfunction
 
 
 " TODO: Statusline
@@ -275,7 +282,11 @@ nnoremap <Leader>ss :Rg<CR>
 nnoremap <Leader>sc :Commands<CR>
 
 " Goto
-nnoremap <Leader>gd :call LanguageClient#textDocument_definition()<CR>
+nmap <Leader>gd <Plug>(coc-definition)
+nmap <Leader>gi <Plug>(coc-implementation)
+nmap <Leader>gr <Plug>(coc-references)
+nnoremap <Leader>gh :CocCommand clangd.switchSourceHeader<CR>
+nnoremap <Leader>is :CocCommand clangd.symbolInfo<CR>
 
 " Windows:
 " TODO: Panel/Windows hotkeys
@@ -289,6 +300,7 @@ autocmd FileType       c nnoremap <localleader>br :!gcc -std=c11   -w % -o /tmp/
 autocmd FileType     cpp nnoremap <localleader>br :!g++ -std=c++17 -w % -o /tmp/test && /tmp/test<CR>
 autocmd FileType    rust nnoremap <localleader>br :!cargo script %<CR>
 autocmd FileType  python nnoremap <localleader>br :!python %<CR>
+autocmd FileType clojure nnoremap <localleader>br :!clj -M %<CR>
 
 autocmd FileType     cpp nnoremap <localleader>bb :!cmake --build _build<CR>
 
