@@ -139,11 +139,21 @@
     gnupg
     pinentry
     polybarFull
+    acpi
+    rustup
 
     wireshark
 
     python27
-    python38
+
+    python38Full
+    python38Packages.virtualenv
+    python38Packages.pip
+    python38Packages.jedi
+    python38Packages.pylint
+    python38Packages.pylint-celery
+    python38Packages.pylint-django
+    python38Packages.pylint-flask
 
     pavucontrol
     kbdd
@@ -174,6 +184,8 @@
 
     blueberry
     xorg.xbacklight
+
+    hugo
   ];
 
   environment.homeBinInPath = true;
