@@ -34,7 +34,9 @@ Plug 'airblade/vim-gitgutter'                           " Show git status line b
 Plug 'nathanaelkane/vim-indent-guides'                  " More verbose color highlighting of identation
 Plug 'tomtom/tcomment_vim'                              " Comment/uncomment hotkeys wrt. language
 Plug 'prabirshrestha/async.vim'                         " Async jobs for vim and neovim
-Plug 'jremmen/vim-ripgrep'                              " Use rg for search the code
+" Plug 'jremmen/vim-ripgrep'                              " Use rg for search the code
+Plug 'junegunn/fzf'                                     " Fuzzy search for file content
+Plug 'junegunn/fzf.vim'                                 " Additional plugin for FZF
 "   vim-syntastic/syntastic
 "   tpope/vim-fugitive
 "   majutsushi/tagbar
