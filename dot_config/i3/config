@@ -49,6 +49,7 @@ bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
 # bindsym $mod+d exec dmenu_run
 bindsym $mod+p exec rofi -show run
+bindsym $mod+a exec rofi -show combi
 bindsym $mod+Shift+p exec xscreensaver-command -lock
 bindsym $mod+d exec pcmanfm
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -101,7 +102,7 @@ bindsym $mod+Shift+space floating toggle
 # bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+# bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
