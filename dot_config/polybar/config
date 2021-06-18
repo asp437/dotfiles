@@ -31,8 +31,9 @@ keyword     = #4f97d7
 
 
 [bar/mybar]
-modules-right = disks cpu memory network-wired audio temp backlight keyboard date
+modules-right = disks cpu memory network-wired audio temp battery backlight keyboard date
 modules-left = i3 cur-window
+monitor = ${env:MONITOR:HDMI-1}
 
 override-redirect = false
 bottom = true
@@ -60,8 +61,8 @@ tray-background = ${root.background}
 tray-scale = 1.0
 tray-padding = 1
 
-dpi-x = 120
-dpi-y = 120
+dpi-x = 90
+dpi-y = 90
 
 enable-ipc = true
 
@@ -86,7 +87,7 @@ label = "%date% %time% "
 [module/cur-window]
 type = internal/xwindow
 format-foreground = ${colors.base}
-label-maxlen = 50
+label-maxlen = 40
 
 [module/keyboard]
 type = internal/xkeyboard
@@ -117,8 +118,8 @@ label =  %gb_used%/%gb_free% (%percentage_used%%)
 [module/disks]
 type = internal/fs
 mount-0 = /
-mount-1 = /home
-mount-2 = /run/media/asp437/Data
+; mount-1 = /home
+; mount-2 = /run/media/asp437/Data
 label-mounted =  %mountpoint%: %percentage_free%%
 
 [module/cpu]
@@ -128,7 +129,11 @@ label =  %percentage%%
 
 [module/network-wired]
 type = internal/network
-interface = wlp4s0
+interface = wlp2s0
 label-connected =   %essid% %downspeed:9% %upspeed:9%
 
+[module/battery]
+type = internal/battery
+full-at = 99
+poll-interval = 5
 
