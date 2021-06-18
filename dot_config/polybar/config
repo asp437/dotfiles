@@ -33,7 +33,7 @@ keyword     = #4f97d7
 [bar/mybar]
 modules-right = disks cpu memory network-wired audio temp battery backlight keyboard date
 modules-left = i3 cur-window
-monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:MONITOR:DP-0}
 
 override-redirect = false
 bottom = true
@@ -65,7 +65,6 @@ dpi-x = 90
 dpi-y = 90
 
 enable-ipc = true
-
 
 [module/i3]
 type = internal/i3

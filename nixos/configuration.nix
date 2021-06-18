@@ -21,6 +21,8 @@
   boot.loader.grub.memtest86.enable = true;
   boot.loader.grub.default = "saved";
   boot.supportedFilesystems = [ "ntfs" ];
+  boot.kernelModules = [ "ddcci" "i2c_dev" ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [ ddcci-driver ];
 
   networking.networkmanager.enable = true;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -123,6 +125,7 @@
     protobuf
     go
     go-protobuf
+    gopls
     thunderbolt
     bolt
     usb-modeswitch
@@ -130,7 +133,7 @@
     zoom-us
     jq
     gcc
-    clang
+    clang_11
     clang-tools
     nodejs
     p7zip
@@ -169,6 +172,7 @@
     mpv
     imagemagick
     evince
+    lxappearance
 
     vanilla-dmz
     paper-icon-theme
@@ -179,7 +183,7 @@
 
     brave
     chromium
-    firefox
+    firefox-bin
     tdesktop
 
     blueberry
@@ -187,6 +191,8 @@
 
     hugo
   ];
+
+  # pkgs.jetbrains.idea-community.override = { jdk = pkgs.jetbrains.jdk; };
 
   environment.homeBinInPath = true;
 
