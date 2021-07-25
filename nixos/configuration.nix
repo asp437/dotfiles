@@ -30,7 +30,7 @@
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour. (They are moved into local-configuration)
-  networking.useDHCP = false;
+  # networking.useDHCP = false;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -144,6 +144,8 @@
     polybarFull
     acpi
     rustup
+    rust-analyzer
+    unrar
 
     wireshark
 
@@ -190,6 +192,7 @@
     xorg.xbacklight
 
     hugo
+    cloc
   ];
 
   # pkgs.jetbrains.idea-community.override = { jdk = pkgs.jetbrains.jdk; };
@@ -267,6 +270,7 @@
 
   services.xserver.windowManager.i3.enable = true; # Use i3wm
   services.picom.enable = true; # Since i3wm doesn't include compositor, use picom (ex. compton)
+  services.picom.vSync = true;
   services.autorandr.enable = true;
   services.xserver.displayManager.sessionCommands = ''
     autorandr --load default --force
