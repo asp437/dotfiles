@@ -265,7 +265,8 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.xserver.layout = "us,ru";
+  services.xserver.layout = "us,us,ru";
+  services.xserver.xkbVariant = ",dvp,";
   services.xserver.xkbOptions = "grp:shifts_toggle,ctrl:swapcaps";
 
   services.xserver.windowManager.i3.enable = true; # Use i3wm
