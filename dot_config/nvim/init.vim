@@ -34,7 +34,7 @@ Plug 'airblade/vim-gitgutter'                           " Show git status line b
 Plug 'nathanaelkane/vim-indent-guides'                  " More verbose color highlighting of identation
 Plug 'tomtom/tcomment_vim'                              " Comment/uncomment hotkeys wrt. language
 Plug 'prabirshrestha/async.vim'                         " Async jobs for vim and neovim
-" Plug 'jremmen/vim-ripgrep'                              " Use rg for search the code
+Plug 'jremmen/vim-ripgrep'                              " Use rg for search the code
 Plug 'junegunn/fzf'                                     " Fuzzy search for file content
 Plug 'junegunn/fzf.vim'                                 " Additional plugin for FZF
 "   vim-syntastic/syntastic
@@ -235,6 +235,7 @@ nnoremap <Esc>          :nohlsearch<CR>
 
 " Windows:
 nnoremap <Leader>we     :NERDTreeFocus<CR>
+nnoremap <Leader>wd     :CocDiagnostic#s<CR>
 
 " Toggles:
 nnoremap <Leader>tl     :set list!<CR>
@@ -252,10 +253,10 @@ nnoremap <Leader>th     :SemanticHighlightToggle<CR>
 nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
 
 " System:
-nnoremap <Leader>sr :source $MYVIMRC<CR>
-nnoremap <Leader>st :split term://zsh<CR>
-nnoremap <Leader>sh :vert help 
-nnoremap <Leader>si :checkhealth<CR>
+nnoremap <Leader>yr :source $MYVIMRC<CR>
+nnoremap <Leader>yt :split term://zsh<CR>
+nnoremap <Leader>yh :vert help 
+nnoremap <Leader>yi :checkhealth<CR>
 
 " Buffers:
 " TODO: Buffers and tabs hotkeys
@@ -287,8 +288,12 @@ nnoremap <Leader>sc :Commands<CR>
 nmap <Leader>gd <Plug>(coc-definition)
 nmap <Leader>gi <Plug>(coc-implementation)
 nmap <Leader>gr <Plug>(coc-references)
+nmap <Leader>g[ <Plug>(coc-diagnostic-prev)
+nmap <Leader>g] <Plug>(coc-diagnostic-next)
+
 nnoremap <Leader>gh :CocCommand clangd.switchSourceHeader<CR>
-nnoremap <Leader>is :CocCommand clangd.symbolInfo<CR>
+nnoremap <Leader>oi :CocCommand clangd.symbolInfo<CR>
+nnoremap <Leader>od :call <SID>show_documentation()<CR>
 
 " Windows:
 " TODO: Panel/Windows hotkeys

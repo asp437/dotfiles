@@ -133,8 +133,9 @@
     zoom-us
     jq
     gcc
-    clang_11
+    clang_12
     clang-tools
+    llvmPackages_12.libllvm
     nodejs
     p7zip
     tree
@@ -146,6 +147,8 @@
     rustup
     rust-analyzer
     unrar
+    tree
+    cloc
 
     wireshark
 
@@ -159,6 +162,8 @@
     python38Packages.pylint-celery
     python38Packages.pylint-django
     python38Packages.pylint-flask
+
+    jetbrains.pycharm-professional
 
     pavucontrol
     kbdd
@@ -175,6 +180,9 @@
     imagemagick
     evince
     lxappearance
+    playerctl
+    silver-searcher
+    vscode
 
     vanilla-dmz
     paper-icon-theme
@@ -265,8 +273,7 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.xserver.layout = "us,us,ru";
-  services.xserver.xkbVariant = ",dvp,";
+  services.xserver.layout = "us,ru";
   services.xserver.xkbOptions = "grp:shifts_toggle,ctrl:swapcaps";
 
   services.xserver.windowManager.i3.enable = true; # Use i3wm
