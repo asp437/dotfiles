@@ -34,4 +34,6 @@ fi
 
 xset r rate 200 50
 
-exec awesome >> /home/asp437/.cache/logs/awesome.log 2>> /home/asp437/.cache/logs/awesome.log
+feh --bg-scale /home/asp437/Pictures/Wallpapers/iBLFYKS.png
+exec i3
+# exec awesome >> /home/asp437/.cache/logs/awesome.log 2>> /home/asp437/.cache/logs/awesome.log
