@@ -37,6 +37,7 @@ Plug 'prabirshrestha/async.vim'                         " Async jobs for vim and
 Plug 'jremmen/vim-ripgrep'                              " Use rg for search the code
 Plug 'junegunn/fzf'                                     " Fuzzy search for file content
 Plug 'junegunn/fzf.vim'                                 " Additional plugin for FZF
+Plug 'fatih/vim-go'                                     " Plugin for better expericence in go development
 "   vim-syntastic/syntastic
 "   tpope/vim-fugitive
 "   majutsushi/tagbar
@@ -159,9 +160,12 @@ autocmd VimEnter,Colorscheme * :highlight IndentGuidesEven guibg=#303030
 highlight ExtraWhitespace ctermbg=red guibg=red
 au BufNew,BufEnter,BufWinEnter,WinEnter,BufNew * match ExtraWhitespace /\s\+$/
 
+let g:coc_global_extensions = ['coc-go', 'coc-clangd', 'coc-rust-analyzer', 'coc-sh', 'coc-json']
+
 function! CocCurrentFunction()
     return get(b:, 'coc_current_function', '')
 endfunction
+
 
 
 " TODO: Statusline
@@ -305,11 +309,12 @@ nnoremap <Leader>od :call <SID>show_documentation()<CR>
 autocmd FileType      sh nnoremap <localleader>br :!bash %<CR>
 autocmd FileType       c nnoremap <localleader>br :!gcc -std=c11   -w % -o /tmp/test && /tmp/test<CR>
 autocmd FileType     cpp nnoremap <localleader>br :!g++ -std=c++17 -w % -o /tmp/test && /tmp/test<CR>
-autocmd FileType    rust nnoremap <localleader>br :!cargo script %<CR>
+autocmd FileType    rust nnoremap <localleader>br :!cargo run<CR>
 autocmd FileType  python nnoremap <localleader>br :!python %<CR>
 autocmd FileType clojure nnoremap <localleader>br :!clj -M %<CR>
 
 autocmd FileType     cpp nnoremap <localleader>bb :!cmake --build _build<CR>
+autocmd FileType    rust nnoremap <localleader>bb :!cargo build<CR>
 
 " From https://github.com/tl182/dotfiles/blob/master/.config/nvim/init.vim
 " Return indent (all whitespace at start of a line), converted from
