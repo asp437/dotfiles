@@ -199,7 +199,7 @@ let g:LanguageClient_serverCommands = {
     \ 'c': ['clangd']
     \ }
 
-let g:deoplete#enable_at_startup = 1                    " Enable deoplete completion
+let g:deoplete#enable_at_startup = 0                    " Enable deoplete completion
 
 " ----Helper functions----
 function! ToggleColorcolumn()
@@ -295,6 +295,8 @@ nmap <Leader>gr <Plug>(coc-references)
 nmap <Leader>g[ <Plug>(coc-diagnostic-prev)
 nmap <Leader>g] <Plug>(coc-diagnostic-next)
 
+inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+
 nnoremap <Leader>gh :CocCommand clangd.switchSourceHeader<CR>
 nnoremap <Leader>oi :CocCommand clangd.symbolInfo<CR>
 nnoremap <Leader>od :call <SID>show_documentation()<CR>
@@ -315,6 +317,7 @@ autocmd FileType clojure nnoremap <localleader>br :!clj -M %<CR>
 
 autocmd FileType     cpp nnoremap <localleader>bb :!cmake --build _build<CR>
 autocmd FileType    rust nnoremap <localleader>bb :!cargo build<CR>
+autocmd FileType      go nnoremap <localleader>rt :!go test ./... -v<CR>
 
 " From https://github.com/tl182/dotfiles/blob/master/.config/nvim/init.vim
 " Return indent (all whitespace at start of a line), converted from
