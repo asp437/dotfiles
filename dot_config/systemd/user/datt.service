@@ -1,0 +1,13 @@
+[Unit]
+Description=Automatic time tracker
+
+[Service]
+Type=simple
+Environment="RUST_LOG=info"
+WorkingDirectory=/home/asp437/bin/datt
+ExecStart=/home/asp437/bin/datt/datt_linux_client
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target
