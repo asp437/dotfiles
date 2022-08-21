@@ -4,3 +4,5 @@
 [core]
 	excludesfile = /home/asp437/.gitignore_global
 	pager = less -x4
+[pager]
+	branch = false
